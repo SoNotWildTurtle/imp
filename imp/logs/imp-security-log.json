@@ -1,0 +1,14 @@
+[
+    {
+        "timestamp": "2025-03-19 15:00:00",
+        "threat": "Brute force SSH attack detected",
+        "source_ip": "192.168.1.50",
+        "action_taken": "Blocked IP via firewall"
+    },
+    {
+        "timestamp": "2025-03-19 15:10:00",
+        "threat": "Suspicious process detected",
+        "process": "nmap",
+        "action_taken": "Terminated process & logged user"
+    }
+]

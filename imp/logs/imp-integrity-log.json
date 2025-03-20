@@ -1,0 +1,10 @@
+[
+    {
+        "timestamp": "2025-03-19 20:00:00",
+        "file": "/etc/ssh/sshd_config",
+        "modification_detected": "Yes",
+        "previous_hash": "a9c8d7b6e5f41234567890123456789a",
+        "current_hash": "f1e2d3c4b5a67890123456789abcdef0",
+        "action_taken": "Alert sent to administrator"
+    }
+]

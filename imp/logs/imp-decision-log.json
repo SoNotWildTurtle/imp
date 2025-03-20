@@ -1,0 +1,14 @@
+[
+    {
+        "timestamp": "2025-03-19 18:00:00",
+        "decision": "Expand AI cluster",
+        "reason": "Detected high CPU usage on main node",
+        "predicted_outcome": "Increased efficiency, reduced processing lag"
+    },
+    {
+        "timestamp": "2025-03-19 19:00:00",
+        "decision": "Deny execution of unapproved script",
+        "reason": "Unknown user attempted unauthorized access",
+        "predicted_outcome": "Prevented potential security breach"
+    }
+]

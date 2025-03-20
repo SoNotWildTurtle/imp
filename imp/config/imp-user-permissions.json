@@ -1,0 +1,24 @@
+{
+    "trusted_users": [
+        {
+            "name": "Alexander Raymond Graham (Minc)",
+            "role": "Owner",
+            "permissions": [
+                "Full access",
+                "Approve major rewrites",
+                "Modify AI behavior",
+                "Authorize system expansion"
+            ]
+        }
+    ],
+    "restricted_users": [
+        {
+            "name": "Unknown User",
+            "role": "Limited",
+            "permissions": [
+                "Basic system inquiries",
+                "Restricted AI interactions"
+            ]
+        }
+    ]
+}
