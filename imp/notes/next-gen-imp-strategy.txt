@@ -29,3 +29,18 @@ In addition to scaling new capabilities, IMP should adopt a relentless approach 
 
 ### Cross‑Disciplinary Inspiration
 To stay at the forefront of research, draw insight from neuroscience, robotics, and distributed systems. Techniques such as attention-based memory consolidation, sensor fusion, and fault-tolerant design will keep IMP adaptable as it tackles increasingly complex tasks. Cultivating a culture of experimentation and knowledge sharing will accelerate learning across domains.
+
+### Future Directions for the Next Decade
+Anticipate hybrid neuro-symbolic architectures where compact reasoning modules interface with large pretrained models. Expect self-evaluating agents that autonomously rewrite inefficient code and verify improvements through simulation. Below is a simplified pseudo-code snippet illustrating an evolutionary loop IMP might run in 2035:
+
+```python
+while True:
+    proposal = generate_code_variant(current_algorithm)
+    if passes_static_checks(proposal):
+        score = simulate_and_score(proposal)
+        if score > threshold:
+            current_algorithm = proposal
+            log_success(proposal, score)
+```
+This approach combines automated code mutation with simulation-based scoring to evolve novel algorithms.
+
