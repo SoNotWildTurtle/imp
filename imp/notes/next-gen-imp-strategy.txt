@@ -23,3 +23,9 @@ By iteratively implementing these components, IMP can steadily advance toward tr
 
 ### Looking Ahead
 The long-term vision is to build an autonomous system that can collaborate with humans on sophisticated research tasks without compromising safety or transparency. By focusing on modular upgrades, deliberate testing, and incremental deployments, IMP can progress toward increasingly capable forms of general intelligence.
+
+### Continuous Bug Hunting and Reliability
+In addition to scaling new capabilities, IMP should adopt a relentless approach to quality control. Frequent automated test runs will surface regressions early, while static analysis tools can catch syntax errors before code execution. Couple these checks with periodic manual reviews that examine log files for unexpected behavior. This disciplined process will help ensure that new features do not erode stability.
+
+### Cross‑Disciplinary Inspiration
+To stay at the forefront of research, draw insight from neuroscience, robotics, and distributed systems. Techniques such as attention-based memory consolidation, sensor fusion, and fault-tolerant design will keep IMP adaptable as it tackles increasingly complex tasks. Cultivating a culture of experimentation and knowledge sharing will accelerate learning across domains.
