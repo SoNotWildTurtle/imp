@@ -31,6 +31,8 @@ def predict_outcomes():
     Predict the potential outcomes, considering:
     - Security risks and solutions
     - AI learning advantages
+    # We should add goal value and personal emotional outcomes for Imp as well
+    - Goal value assessment and personal emotional outcomes for IMP
     - Performance enhancements
     """
 
