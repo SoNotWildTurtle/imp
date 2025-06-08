@@ -4,6 +4,9 @@ import subprocess
 import time
 from pathlib import Path
 
+# 2025-06-08: Reflective Recursive Enumeration Blockchain Self-Healing idea.
+# Version tracking ensures IMP keeps memories of all code states.
+
 ROOT = Path(__file__).resolve().parents[1]
 CODEBASE_PATH = str(ROOT) + "/"
 VERSION_LOG = ROOT / "logs" / "imp-version-log.json"
@@ -27,6 +30,7 @@ def track_versions():
 
     new_version = {"timestamp": time.ctime(), "files": list_existing_code()}
     versions.append(new_version)
+    # Keep every version so IMP can restore functionality if necessary.
 
     with open(VERSION_LOG, "w") as f:
         json.dump(versions, f, indent=4)

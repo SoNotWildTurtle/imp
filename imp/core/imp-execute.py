@@ -1,6 +1,10 @@
 from pathlib import Path
 import subprocess
 
+# 2025-06-08: Execution harness should remain additive and retain prior
+# processes. Consider a reflective recursive enumeration blockchain for
+# self-healing and memory preservation.
+
 ROOT = Path(__file__).resolve().parents[1]
 
 print("🔥 IMP AI is initializing...")

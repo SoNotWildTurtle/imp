@@ -1,0 +1,7 @@
+Reflective Recursive Enumeration Blockchain Self-Healing Idea (2025-06-08)
+--------------------------------------------------------------------------
+This note outlines an approach for preserving IMP's history and enabling
+self-repair. By recording code hashes and metadata on a lightweight ledger,
+IMP can verify integrity, roll back to prior versions, and maintain a
+permanent memory of its evolution. Updates should always be additive with
+backups preserved so the system never loses past functionality.

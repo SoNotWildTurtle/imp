@@ -5,6 +5,14 @@ import argparse
 from pathlib import Path
 from transformers import pipeline
 
+# 2025-06-08: Reflective Recursive Enumeration Blockchain Self-Healing idea.
+# IMP should favor additive code changes and preserve backups so no functionality
+# is lost. The snippet below outlines a potential ledger-based approach.
+#
+# def blockchain_self_heal():
+#     """Log code hashes to a blockchain to enable recovery of any past version."""
+#     pass
+
 ROOT = Path(__file__).resolve().parents[1]
 CODEBASE_PATH = str(ROOT) + "/"
 UPDATE_LOG = ROOT / "logs" / "imp-update-log.json"
@@ -58,7 +66,11 @@ def analyze_and_update_code(generator):
 
             print(f"[!] Major rewrite needed for {file}. Awaiting approval.")
         else:
-            os.rename(os.path.join(CODEBASE_PATH, file), os.path.join(CODEBASE_PATH, f"{file}.backup"))
+            os.rename(
+                os.path.join(CODEBASE_PATH, file),
+                os.path.join(CODEBASE_PATH, f"{file}.backup")
+            )
+            # Preserve previous versions for recovery; IMP should be additive.
 
             with open(os.path.join(CODEBASE_PATH, file), "w") as f:
                 f.write(new_code)
