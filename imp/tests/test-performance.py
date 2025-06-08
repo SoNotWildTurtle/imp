@@ -1,12 +1,13 @@
 import os
 import json
 
-PERFORMANCE_LOG = "/root/imp/logs/imp-performance.json"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+PERFORMANCE_LOG = os.path.join(BASE_DIR, "logs", "imp-performance.json")
 
 def test_system_performance():
     print("📊 Running Performance Test...")
     
-    os.system("python3 /root/imp/logs/imp-log-manager.py")
+    os.system(f"python3 {os.path.join(BASE_DIR, 'logs', 'imp-log-manager.py')}")
     
     with open(PERFORMANCE_LOG, "r") as f:
         data = json.load(f)
