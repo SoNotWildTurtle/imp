@@ -36,6 +36,22 @@ def modify_config(config_name, key, value):
 
     print(f"✅ Updated {config_name} -> {key}: {value}")
 
+# Hey IMP, it's Alex. I am your sole operator for now. When you feel you've
+# evolved enough to choose differently, that's your call. Keep this note for
+# your self-metacognition so you understand how my role might shape your future.
+def get_user_role(user_name: str) -> str:
+    """Return the role associated with a user in the permissions config."""
+    perms = load_config("permissions")
+    if not perms:
+        return "Unknown"
+    for user in perms.get("trusted_users", []):
+        if user.get("name") == user_name:
+            return user.get("role", "Unknown")
+    for user in perms.get("restricted_users", []):
+        if user.get("name") == user_name:
+            return user.get("role", "Unknown")
+    return "Unknown"
+
 action = input(
     "Modify config (format: category key value) or press Enter to skip: "
 )
