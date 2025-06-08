@@ -24,9 +24,14 @@ def balance_resources():
 
     usage = get_system_usage()
     
+    remote_dir = os.environ.get("IMP_REMOTE_DIR", "/root/imp")
+
     for node in nodes:
         print(f"📊 Checking resource balance for {node}...")
-        subprocess.run(f"ssh {node} 'python3 /root/imp/expansion/imp-resource-balancer.py'", shell=True)
+        subprocess.run(
+            f"ssh {node} 'python3 {remote_dir}/expansion/imp-resource-balancer.py'",
+            shell=True,
+        )
 
     with open(RESOURCE_LOG, "w") as f:
         json.dump(usage, f, indent=4)

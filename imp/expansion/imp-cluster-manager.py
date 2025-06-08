@@ -19,10 +19,15 @@ def distribute_workload():
         print("⚠️ No active cluster nodes detected.")
         return
 
+    remote_dir = os.environ.get("IMP_REMOTE_DIR", "/root/imp")
+
     for node in nodes:
         print(f"🔄 Distributing workload to {node}...")
-        subprocess.run(f"scp -r {ROOT}/* {node}:/root/imp/", shell=True)
-        subprocess.run(f"ssh {node} 'python3 /root/imp/imp-execute.py'", shell=True)
+        subprocess.run(f"scp -r {ROOT}/* {node}:{remote_dir}/", shell=True)
+        subprocess.run(
+            f"ssh {node} 'python3 {remote_dir}/core/imp-execute.py'",
+            shell=True,
+        )
 
 if __name__ == "__main__":
     distribute_workload()

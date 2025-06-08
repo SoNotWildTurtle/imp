@@ -22,10 +22,11 @@ def get_available_nodes():
     return available_nodes
 
 def schedule_tasks():
+    remote_dir = os.environ.get("IMP_REMOTE_DIR", "/root/imp")
     tasks = [
-        "python3 /root/imp/self-improvement/imp-code-updater.py",
-        "python3 /root/imp/security/imp-security-optimizer.py",
-        "python3 /root/imp/expansion/imp-resource-balancer.py"
+        f"python3 {remote_dir}/self-improvement/imp-code-updater.py",
+        f"python3 {remote_dir}/security/imp-security-optimizer.py",
+        f"python3 {remote_dir}/expansion/imp-resource-balancer.py",
     ]
 
     nodes = get_available_nodes()
