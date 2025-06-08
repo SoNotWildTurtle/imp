@@ -7,7 +7,7 @@ read -p "Are you sure? (yes/no): " choice
 if [[ "$choice" == "yes" ]]; then
     echo "Initiating IMP self-destruction... Run these scripts:"
     
-    echo "shred -u -z /root/imp/logs/*""
+    echo "shred -u -z /root/imp/logs/*"
     echo "shred -u -z /root/imp/config/*"
     echo "shred -u -z /root/imp/self-improvement/*"
     echo "shred -u -z /root/imp/expansion/*"

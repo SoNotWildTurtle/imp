@@ -1,9 +1,10 @@
 import os
 import hashlib
 import json
-import time
+from pathlib import Path
 
-INTEGRITY_LOG = "/root/imp/logs/imp-integrity-log.json"
+ROOT = Path(__file__).resolve().parents[1]
+INTEGRITY_LOG = ROOT / "logs" / "imp-integrity-log.json"
 WATCHED_FILES = [
     "/etc/passwd",
     "/etc/shadow",
@@ -32,6 +33,5 @@ def check_integrity():
 
     print("[+] Integrity check completed.")
 
-while True:
+if __name__ == "__main__":
     check_integrity()
-    time.sleep(3600)  # Runs every hour

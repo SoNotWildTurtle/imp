@@ -1,8 +1,8 @@
 {
     "python_interpreter": "/usr/bin/python3",
-    "working_directory": "/root/imp/",
-    "temp_files_path": "/root/imp/tmp/",
+    "working_directory": "./",
+    "temp_files_path": "./tmp/",
     "network_mode": "Isolated (only communicate with approved nodes)",
     "use_ssl": true,
-    "ssl_cert_path": "/root/imp/security/imp-cert.pem"
+    "ssl_cert_path": "./security/imp-cert.pem"
 }

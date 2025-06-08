@@ -1,6 +1,5 @@
 import os
 import subprocess
-import time
 
 def run_security_checks():
     print("🔍 Running security analysis...")
@@ -25,6 +24,5 @@ def run_security_checks():
 
     print("[+] Security optimizations completed.")
 
-while True:
+if __name__ == "__main__":
     run_security_checks()
-    time.sleep(86400)  # Runs once a day

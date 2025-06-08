@@ -1,38 +1,96 @@
 import os
 import json
-import time
-from transformers import pipeline
+from pathlib import Path
+try:
+    from transformers import pipeline
+except Exception:
+    pipeline = None
+from typing import Optional
 
-GOALS_FILE = "/root/imp/logs/imp-goals.json"
+try:
+    import openai
+except ImportError:
+    openai = None
 
-generator = pipeline("text-generation", model="gpt2")
+ROOT = Path(__file__).resolve().parents[1]
+GOALS_FILE = ROOT / "logs" / "imp-goals.json"
+PRIORITIES = ["low", "medium", "high"]
 
-def get_existing_goals():
+if pipeline is not None:
+    offline_generator = pipeline("text-generation", model="gpt2")
+else:
+    offline_generator = None
+
+def generate_text(prompt: str, mode: str = "online") -> str:
+    """Generate text from either ChatGPT (online) or local model."""
+    if mode == "online" and openai is not None:
+        api_key = os.getenv("OPENAI_API_KEY")
+        if api_key:
+            openai.api_key = api_key
+            try:
+                resp = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                return resp["choices"][0]["message"]["content"].strip()
+            except Exception as exc:
+                print(f"[!] ChatGPT request failed: {exc}")
+    if offline_generator is not None:
+        output = offline_generator(prompt, max_length=500, num_return_sequences=1)
+        return output[0]["generated_text"].strip()
+    # fallback simple echo if no generator available
+    return prompt.strip()
+
+def get_existing_goals(term: Optional[str] = None):
+    """Return all stored goals. Optionally filter by 'short-term' or 'long-term'."""
     if not os.path.exists(GOALS_FILE):
         return []
     with open(GOALS_FILE, "r") as f:
-        return json.load(f)
+        goals = json.load(f)
+    if term:
+        return [g for g in goals if g.get("term") == term]
+    return goals
 
-def add_new_goal(user_input):
+def add_new_goal(
+    user_input: str,
+    term: str = "long-term",
+    priority: str = "medium",
+    mode: str = "online",
+):
+    """Add a new goal with the provided term and priority."""
     existing_goals = get_existing_goals()
 
-    prompt = f"""
-    User has provided the following input:
-    "{user_input}"
+    prompt = (
+        f"User has provided the following input:\n{user_input}\n"
+        "Convert this into a structured, actionable AI goal."
+    )
 
-    Convert this into a structured, actionable AI goal.
-    """
+    new_goal = generate_text(prompt, mode)
 
-    response = generator(prompt, max_length=500, num_return_sequences=1)
-    new_goal = response[0]['generated_text']
+    if term not in ("short-term", "long-term"):
+        term = "long-term"
+    if priority not in PRIORITIES:
+        priority = "medium"
 
-    existing_goals.append({"goal": new_goal, "status": "pending"})
+    existing_goals.append(
+        {"goal": new_goal, "term": term, "priority": priority, "status": "pending"}
+    )
 
     with open(GOALS_FILE, "w") as f:
         json.dump(existing_goals, f, indent=4)
 
     print(f"[+] New goal added: {new_goal}")
 
-while True:
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="IMP Goal Manager")
+    parser.add_argument("--mode", choices=["online", "offline"], default="online")
+    args = parser.parse_args()
+
     user_input = input("You: ")
-    add_new_goal(user_input)
+    term_choice = input("Is this goal short-term or long-term? [s/l]: ").strip().lower()
+    term = "short-term" if term_choice.startswith("s") else "long-term"
+    pr_choice = input("Priority? [h/m/l]: ").strip().lower()
+    priority = "high" if pr_choice.startswith("h") else "low" if pr_choice.startswith("l") else "medium"
+    add_new_goal(user_input, term, priority, args.mode)

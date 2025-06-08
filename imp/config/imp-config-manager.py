@@ -1,12 +1,12 @@
-import os
 import json
-import time
+from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILES = {
-    "personality": "/root/imp/config/imp-personality.json",
-    "permissions": "/root/imp/config/imp-user-permissions.json",
-    "system": "/root/imp/config/imp-system-settings.json",
-    "environment": "/root/imp/config/imp-environment.json"
+    "personality": ROOT / "config" / "imp-personality.json",
+    "permissions": ROOT / "config" / "imp-user-permissions.json",
+    "system": ROOT / "config" / "imp-system-settings.json",
+    "environment": ROOT / "config" / "imp-environment.json"
 }
 
 def load_config(config_name):
@@ -35,10 +35,10 @@ def modify_config(config_name, key, value):
 
     print(f"✅ Updated {config_name} -> {key}: {value}")
 
-while True:
-    action = input("Modify config (format: category key value) or press Enter to skip: ")
-    if action:
-        parts = action.split(" ", 2)
-        if len(parts) == 3:
-            modify_config(parts[0], parts[1], parts[2])
-    time.sleep(5)
+action = input(
+    "Modify config (format: category key value) or press Enter to skip: "
+)
+if action:
+    parts = action.split(" ", 2)
+    if len(parts) == 3:
+        modify_config(parts[0], parts[1], parts[2])

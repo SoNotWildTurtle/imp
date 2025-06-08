@@ -1,6 +1,5 @@
 import os
 import subprocess
-import time
 
 def enforce_firewall():
     print("Checking firewall settings...")
@@ -22,6 +21,5 @@ def enforce_firewall():
 
     print("[+] Firewall rules enforced.")
 
-while True:
+if __name__ == "__main__":
     enforce_firewall()
-    time.sleep(86400)  # Runs daily

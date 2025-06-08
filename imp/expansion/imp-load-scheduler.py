@@ -1,10 +1,11 @@
 import os
 import json
-import time
 import subprocess
+from pathlib import Path
 
-TASKS_FILE = "/root/imp/logs/imp-scheduled-tasks.json"
-CLUSTER_NODES_FILE = "/root/imp/config/imp-cluster-nodes.json"
+ROOT = Path(__file__).resolve().parents[1]
+TASKS_FILE = ROOT / "logs" / "imp-scheduled-tasks.json"
+CLUSTER_NODES_FILE = ROOT / "config" / "imp-cluster-nodes.json"
 
 def get_available_nodes():
     nodes = []
@@ -44,6 +45,5 @@ def schedule_tasks():
 
     print("[+] Tasks scheduled across AI nodes.")
 
-while True:
+if __name__ == "__main__":
     schedule_tasks()
-    time.sleep(7200)  # Runs every 2 hours

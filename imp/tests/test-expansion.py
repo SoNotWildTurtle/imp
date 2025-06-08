@@ -1,6 +1,8 @@
 import json
+from pathlib import Path
 
-NODE_HEALTH_LOG = "/root/imp/logs/imp-node-health.json"
+ROOT = Path(__file__).resolve().parents[1]
+NODE_HEALTH_LOG = ROOT / "logs" / "imp-node-health.json"
 
 def test_node_health():
     print("🔗 Checking AI Cluster Nodes...")

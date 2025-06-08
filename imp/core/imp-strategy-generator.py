@@ -1,10 +1,11 @@
 import os
 import json
-import time
+from pathlib import Path
 from transformers import pipeline
 
-STRATEGY_FILE = "/root/imp/logs/imp-strategy-plans.json"
-LEARNING_FILE = "/root/imp/logs/imp-learning-memory.json"
+ROOT = Path(__file__).resolve().parents[1]
+STRATEGY_FILE = ROOT / "logs" / "imp-strategy-plans.json"
+LEARNING_FILE = ROOT / "logs" / "imp-learning-memory.json"
 
 generator = pipeline("text-generation", model="gpt2")
 
@@ -37,6 +38,5 @@ def generate_new_strategy():
 
     print("[+] IMP has generated a new strategic plan.")
 
-while True:
+if __name__ == "__main__":
     generate_new_strategy()
-    time.sleep(43200)  # Runs every 12 hours
