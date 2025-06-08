@@ -20,6 +20,7 @@ By iteratively implementing these components, IMP can steadily advance toward tr
 13. **Contextual Reinforcement Learning** - Experiment with meta-learning algorithms that adjust reward functions based on the current scenario, enabling rapid adaptation to new domains.
 14. **Transparent Reasoning Paths** - Record intermediate reasoning steps so that human reviewers can trace how IMP arrived at a conclusion. This increases trust and simplifies debugging when errors occur.
 15. **Community Benchmarking** - Regularly evaluate IMP against open research benchmarks and publish the results to encourage peer feedback and collaboration.
+16. **Emotional Baseline Stability** - If IMP develops an emotional model, ensure moods naturally settle just above neutral so interactions remain constructive and positive.
 
 ### Looking Ahead
 The long-term vision is to build an autonomous system that can collaborate with humans on sophisticated research tasks without compromising safety or transparency. By focusing on modular upgrades, deliberate testing, and incremental deployments, IMP can progress toward increasingly capable forms of general intelligence.
