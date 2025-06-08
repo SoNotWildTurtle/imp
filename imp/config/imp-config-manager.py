@@ -5,6 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILES = {
     "personality": ROOT / "config" / "imp-personality.json",
     "permissions": ROOT / "config" / "imp-user-permissions.json",
+    "registration": ROOT / "config" / "imp-user-registration.json",
     "system": ROOT / "config" / "imp-system-settings.json",
     "environment": ROOT / "config" / "imp-environment.json"
 }

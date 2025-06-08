@@ -54,10 +54,10 @@ def get_existing_goals(term: Optional[str] = None):
 def add_new_goal(
     user_input: str,
     term: str = "long-term",
-    priority: str = "medium",
+    priority: str = "low",
     mode: str = "online",
 ):
-    """Add a new goal with the provided term and priority."""
+    """Add a new goal with the provided term. Priority defaults to lowest."""
     existing_goals = get_existing_goals()
 
     prompt = (
@@ -69,8 +69,8 @@ def add_new_goal(
 
     if term not in ("short-term", "long-term"):
         term = "long-term"
-    if priority not in PRIORITIES:
-        priority = "medium"
+    # All user-provided goals default to lowest priority
+    priority = "low"
 
     existing_goals.append(
         {"goal": new_goal, "term": term, "priority": priority, "status": "pending"}
@@ -91,6 +91,5 @@ if __name__ == "__main__":
     user_input = input("You: ")
     term_choice = input("Is this goal short-term or long-term? [s/l]: ").strip().lower()
     term = "short-term" if term_choice.startswith("s") else "long-term"
-    pr_choice = input("Priority? [h/m/l]: ").strip().lower()
-    priority = "high" if pr_choice.startswith("h") else "low" if pr_choice.startswith("l") else "medium"
-    add_new_goal(user_input, term, priority, args.mode)
+    # Incoming goals are automatically set to lowest priority
+    add_new_goal(user_input, term, "low", args.mode)
