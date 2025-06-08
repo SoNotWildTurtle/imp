@@ -59,3 +59,13 @@ for module in installed_modules:
 ```
 
 By 2035, robust simulation environments will allow agents like IMP to validate risky changes before deployment, dramatically reducing bugs and accelerating progress.
+
+### Sample Distributed Memory Call
+```python
+from imp.core import imp_goal_manager
+
+# Retrieve facts from distributed memory
+facts = memory.get_recent_facts(limit=10)
+new_goal = imp_goal_manager.generate_goal(facts)
+print("Planning next step:", new_goal)
+```
