@@ -1,7 +1,9 @@
 import json
+import os
 
-LEARNING_FILE = "/root/imp/logs/imp-learning-memory.json"
-STRATEGY_FILE = "/root/imp/logs/imp-strategy-plans.json"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+LEARNING_FILE = os.path.join(BASE_DIR, "logs", "imp-learning-memory.json")
+STRATEGY_FILE = os.path.join(BASE_DIR, "logs", "imp-strategy-plans.json")
 
 def test_ai_learning():
     print("🔍 Testing AI Learning Memory...")

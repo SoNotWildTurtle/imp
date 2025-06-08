@@ -1,6 +1,8 @@
 import json
+import os
 
-UPDATE_LOG = "/root/imp/logs/imp-update-log.json"
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+UPDATE_LOG = os.path.join(BASE_DIR, "logs", "imp-update-log.json")
 
 def test_code_updates():
     print("🔄 Checking Code Updates...")
