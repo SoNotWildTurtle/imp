@@ -17,6 +17,23 @@ class SimpleNeuralNetwork:
             for _ in range(hidden_size)
         ]
 
+    def add_hidden_neuron(self):
+        """Expand the hidden layer with a new neuron and random weights."""
+        self.hidden_size += 1
+        for i in range(self.input_size):
+            self.w1[i].append(random.uniform(-1, 1))
+        self.w2.append([random.uniform(-1, 1) for _ in range(self.output_size)])
+
+    def update_weights(self, inputs: List[float], target: List[float], learning_rate: float = 0.1):
+        """Very basic weight update using output error."""
+        outputs = self.forward(inputs)
+        if len(target) != self.output_size:
+            raise ValueError("Target vector size must match output size")
+        errors = [target[i] - outputs[i] for i in range(self.output_size)]
+        for j in range(self.hidden_size):
+            for k in range(self.output_size):
+                self.w2[j][k] += learning_rate * errors[k]
+
     @staticmethod
     def _relu(x: float) -> float:
         return x if x > 0 else 0.0
