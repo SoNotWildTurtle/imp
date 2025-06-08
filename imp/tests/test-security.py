@@ -34,3 +34,10 @@ def test_vulnerability_scanner():
     print("✅ Vulnerability Scan Executed! Review output manually.")
 
 test_vulnerability_scanner()
+
+def test_poison_detector():
+    print("🛡️ Running Poison Detector...")
+    os.system(f"python3 {ROOT / 'security' / 'imp-poison-detector.py'}")
+    print("✅ Poison Detector Executed! Review output manually.")
+
+test_poison_detector()
