@@ -20,3 +20,17 @@ def test_intrusion_detection():
 
 test_firewall()
 test_intrusion_detection()
+
+def test_security_optimizer():
+    print("🛡️ Running Security Optimizer...")
+    os.system(f"python3 {ROOT / 'security' / 'imp-security-optimizer.py'}")
+    print("✅ Security Optimizer Executed! Review output manually.")
+
+test_security_optimizer()
+
+def test_vulnerability_scanner():
+    print("🛡️ Running Vulnerability Scanner...")
+    os.system(f"python3 {ROOT / 'security' / 'imp-vulnerability-scanner.py'}")
+    print("✅ Vulnerability Scan Executed! Review output manually.")
+
+test_vulnerability_scanner()
