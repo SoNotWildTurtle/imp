@@ -22,6 +22,10 @@ APPROVAL_FILE = ROOT / "logs" / "imp-major-rewrite-requests.json"
 def get_generator(mode: str):
     """Return a text-generation pipeline using the requested mode."""
     if mode == "offline":
+    #alex again: figure this one out using chatGPT's goal requesting feature you have.
+    #https://huggingface.co/nold/starcoder2-15b-GGUF?library=transformers
+    #https://huggingface.co/docs/transformers/main_classes/pipelines
+    #https://www.nsa.gov/About/Cybersecurity-Collaboration-Center/Standards-and-Certifications/
         try:
             from ctransformers import AutoModelForCausalLM
             model_path = ROOT / "models" / "starcoder2-15b.Q4_K_M.gguf"

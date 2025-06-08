@@ -15,5 +15,6 @@ python3 "$SCRIPT_DIR/test-intranet.py"
 python3 "$SCRIPT_DIR/test-metacognition.py"
 python3 "$SCRIPT_DIR/test-config.py"
 python3 "$SCRIPT_DIR/test-logs.py"
+python3 "$SCRIPT_DIR/test-install.py"
 
 echo "✅ All Tests Completed!"
