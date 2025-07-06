@@ -1,7 +1,10 @@
 import json
 
-LEARNING_FILE = "/root/imp/logs/imp-learning-memory.json"
-STRATEGY_FILE = "/root/imp/logs/imp-strategy-plans.json"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+LEARNING_FILE = BASE_DIR / "logs" / "imp-learning-memory.json"
+STRATEGY_FILE = BASE_DIR / "logs" / "imp-strategy-plans.json"
 
 def test_ai_learning():
     print("🔍 Testing AI Learning Memory...")
