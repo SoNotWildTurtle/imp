@@ -1,9 +1,12 @@
 import json
 
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[1]
 LOG_FILES = [
-    "/root/imp/logs/imp-activity-log.json",
-    "/root/imp/logs/imp-security-log.json",
-    "/root/imp/logs/imp-update-log.json"
+    BASE_DIR / "logs" / "imp-activity-log.json",
+    BASE_DIR / "logs" / "imp-security-log.json",
+    BASE_DIR / "logs" / "imp-update-log.json",
 ]
 
 def test_logging_system():

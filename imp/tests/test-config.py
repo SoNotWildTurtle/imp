@@ -1,6 +1,9 @@
 import json
 
-CONFIG_FILE = "/root/imp/config/imp-personality.json"
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+CONFIG_FILE = BASE_DIR / "config" / "imp-personality.json"
 
 def test_ai_personality():
     print("🤖 Validating AI Personality Settings...")

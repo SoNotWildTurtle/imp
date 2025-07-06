@@ -1,14 +1,17 @@
 #!/bin/bash
-#chmod +x /root/imp/tests/run-all-tests.sh
 
 echo "🚀 Running Full IMP System Test Suite..."
 
-python3 /root/imp/tests/test-core-functions.py
-python3 /root/imp/tests/test-security.py
-python3 /root/imp/tests/test-performance.py
-python3 /root/imp/tests/test-expansion.py
-python3 /root/imp/tests/test-self-improvement.py
-python3 /root/imp/tests/test-config.py
-python3 /root/imp/tests/test-logs.py
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+BASE_DIR="$(dirname "$SCRIPT_DIR")"
+
+python3 "$SCRIPT_DIR/test-core-functions.py"
+python3 "$SCRIPT_DIR/test-security.py"
+python3 "$SCRIPT_DIR/test-performance.py"
+python3 "$SCRIPT_DIR/test-expansion.py"
+python3 "$SCRIPT_DIR/test-self-improvement.py"
+python3 "$SCRIPT_DIR/test-interaction.py"
+python3 "$SCRIPT_DIR/test-config.py"
+python3 "$SCRIPT_DIR/test-logs.py"
 
 echo "✅ All Tests Completed!"
