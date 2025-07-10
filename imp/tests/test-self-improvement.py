@@ -1,6 +1,8 @@
 import json
+from pathlib import Path
 
-UPDATE_LOG = "/root/imp/logs/imp-update-log.json"
+ROOT = Path(__file__).resolve().parents[1]
+UPDATE_LOG = ROOT / "logs" / "imp-update-log.json"
 
 def test_code_updates():
     print("🔄 Checking Code Updates...")

@@ -1,0 +1,5 @@
+transformers
+openai
+ctransformers
+scapy
+requests

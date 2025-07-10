@@ -1,7 +1,10 @@
 import json
+from pathlib import Path
 
-LEARNING_FILE = "/root/imp/logs/imp-learning-memory.json"
-STRATEGY_FILE = "/root/imp/logs/imp-strategy-plans.json"
+# Resolve repository root based on this test file's location
+ROOT = Path(__file__).resolve().parents[1]
+LEARNING_FILE = ROOT / "logs" / "imp-learning-memory.json"
+STRATEGY_FILE = ROOT / "logs" / "imp-strategy-plans.json"
 
 def test_ai_learning():
     print("🔍 Testing AI Learning Memory...")

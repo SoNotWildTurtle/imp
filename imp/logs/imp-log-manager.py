@@ -1,14 +1,14 @@
-import os
 import json
-import time
+from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
 LOG_FILES = {
-    "activity": "/root/imp/logs/imp-activity-log.json",
-    "security": "/root/imp/logs/imp-security-log.json",
-    "updates": "/root/imp/logs/imp-update-log.json",
-    "decisions": "/root/imp/logs/imp-decision-log.json",
-    "performance": "/root/imp/logs/imp-performance.json",
-    "integrity": "/root/imp/logs/imp-integrity-log.json"
+    "activity": ROOT / "logs" / "imp-activity-log.json",
+    "security": ROOT / "logs" / "imp-security-log.json",
+    "updates": ROOT / "logs" / "imp-update-log.json",
+    "decisions": ROOT / "logs" / "imp-decision-log.json",
+    "performance": ROOT / "logs" / "imp-performance.json",
+    "integrity": ROOT / "logs" / "imp-integrity-log.json"
 }
 
 def review_logs(log_type):
@@ -31,7 +31,7 @@ def clean_logs(log_type):
 
     print(f"🗑️ {log_type} logs have been cleared.")
 
-while True:
+if __name__ == "__main__":
     action = input("Review or clean logs (format: review/clean log_type) or press Enter to skip: ")
     if action:
         parts = action.split(" ")
@@ -40,4 +40,3 @@ while True:
                 review_logs(parts[1])
             elif parts[0] == "clean":
                 clean_logs(parts[1])
-    time.sleep(5)

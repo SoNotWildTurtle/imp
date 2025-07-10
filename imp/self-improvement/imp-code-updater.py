@@ -1,19 +1,46 @@
 import os
 import json
 import time
+import argparse
+from pathlib import Path
 from transformers import pipeline
 
-CODEBASE_PATH = "/root/imp/"
-UPDATE_LOG = "/root/imp/logs/imp-update-log.txt"
-APPROVAL_FILE = "/root/imp/logs/imp-major-rewrite-requests.json"
+# 2025-06-08: Reflective Recursive Enumeration Blockchain Self-Healing idea.
+# IMP should favor additive code changes and preserve backups so no functionality
+# is lost. The snippet below outlines a potential ledger-based approach.
+#
+# def blockchain_self_heal():
+#     """Log code hashes to a blockchain to enable recovery of any past version."""
+#     pass
 
-generator = pipeline("text-generation", model="gpt2")
+ROOT = Path(__file__).resolve().parents[1]
+CODEBASE_PATH = str(ROOT) + "/"
+UPDATE_LOG = ROOT / "logs" / "imp-update-log.json"
+APPROVAL_FILE = ROOT / "logs" / "imp-major-rewrite-requests.json"
+
+
+def get_generator(mode: str):
+    """Return a text-generation pipeline using the requested mode."""
+    if mode == "offline":
+    #alex again: figure this one out using chatGPT's goal requesting feature you have.
+    #https://huggingface.co/nold/starcoder2-15b-GGUF?library=transformers
+    #https://huggingface.co/docs/transformers/main_classes/pipelines
+    #https://www.nsa.gov/About/Cybersecurity-Collaboration-Center/Standards-and-Certifications/
+        try:
+            from ctransformers import AutoModelForCausalLM
+            model_path = ROOT / "models" / "starcoder2-15b.Q4_K_M.gguf"
+            model = AutoModelForCausalLM.from_pretrained(model_path, model_type="starcoder")
+            return pipeline("text-generation", model=model)
+        except Exception as exc:
+            print(f"[!] Offline model could not be loaded: {exc}")
+            return None
+    return pipeline("text-generation", model="gpt2")
 
 def list_existing_code():
     files = [f for f in os.listdir(CODEBASE_PATH) if f.endswith(".py")]
     return files
 
-def analyze_and_update_code():
+def analyze_and_update_code(generator):
     files = list_existing_code()
 
     for file in files:
@@ -43,16 +70,50 @@ def analyze_and_update_code():
 
             print(f"[!] Major rewrite needed for {file}. Awaiting approval.")
         else:
-            os.rename(os.path.join(CODEBASE_PATH, file), os.path.join(CODEBASE_PATH, f"{file}.backup"))
+            os.rename(
+                os.path.join(CODEBASE_PATH, file),
+                os.path.join(CODEBASE_PATH, f"{file}.backup")
+            )
+            # Preserve previous versions for recovery; IMP should be additive.
 
             with open(os.path.join(CODEBASE_PATH, file), "w") as f:
                 f.write(new_code)
 
-            with open(UPDATE_LOG, "a") as log:
-                log.write(f"{time.ctime()} - Updated {file}\n")
+            # Append an entry to the JSON update log
+            entry = {
+                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "file_modified": file,
+                "update_type": "Automated minor optimization",
+                "status": "Applied successfully",
+            }
+
+            if UPDATE_LOG.exists():
+                with open(UPDATE_LOG, "r") as log:
+                    data = json.load(log)
+            else:
+                data = []
+
+            data.append(entry)
+
+            with open(UPDATE_LOG, "w") as log:
+                json.dump(data, log, indent=4)
 
             print(f"✅ Updated {file} with minor optimizations.")
 
-while True:
-    analyze_and_update_code()
-    time.sleep(86400)  # Runs daily
+def main():
+    parser = argparse.ArgumentParser(description="IMP code updater")
+    parser.add_argument(
+        "--mode",
+        choices=["online", "offline"],
+        default="online",
+        help="Choose online (default) or offline model",
+    )
+    args = parser.parse_args()
+
+    generator = get_generator(args.mode)
+    if generator:
+        analyze_and_update_code(generator)
+
+
+if __name__ == "__main__":
+    main()
