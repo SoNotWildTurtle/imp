@@ -1,0 +1,9 @@
+{
+    "installed": {
+        "client_id": "YOUR_CLIENT_ID",
+        "project_id": "imp-project",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]
+    }
+}

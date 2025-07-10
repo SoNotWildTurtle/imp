@@ -1,0 +1,6 @@
+[
+    {
+        "file": "expansion/imp-node-communicator.py",
+        "error": "  File \"/workspace/imp/imp/expansion/imp-node-communicator.py\", line 6\n    from imp.core.imp-message-bus import send_message\n                     ^\nSyntaxError: invalid syntax\n"
+    }
+]
