@@ -81,3 +81,23 @@ import requests
 response = requests.get("https://csrc.nist.gov/publications")
 print("NIST site status:", response.status_code)
 ```
+\n## 3D Neural Networks and Automated Cybersecurity
+The latest experiments explore spatial neuron placement and myelin-like connections.
+By assigning each neuron a 3D coordinate, IMP can calculate signal resistance based
+on distance. Connections may be "reinforced" when specific conditions are satisfied,
+mirroring the role of oligodendrocytes and Schwann cells. This creates spike-based
+pathways that adapt over time without traditional weight adjustments.
+
+```python
+from imp.core import imp_3d_neural_network
+net = imp_3d_neural_network.ThreeDNeuralNetwork()
+a = net.add_neuron((0,0,0))
+b = net.add_neuron((0,1,0), threshold=0.5)
+net.connect(a, b, myelin=3.0)
+result = net.forward([(a, 1.2)])
+print(result)
+```
+
+Alongside advanced neural design, IMP's automated defense cycle now bundles
+firewall hardening, integrity checks, threat monitoring, and vulnerability scans
+into one routine. This helps mitigate poisoning attempts or system breaches.
