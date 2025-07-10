@@ -15,5 +15,18 @@ def test_forward():
     assert len(out) == 1
     print("✅ Neural Network Test Passed!")
 
+def test_save_load():
+    print("💾 Testing Neural Network Save/Load...")
+    net = module.SimpleNeuralNetwork(2, 2, 1)
+    tmp = ROOT / "nn_tmp.json"
+    net.save(tmp)
+    loaded = module.SimpleNeuralNetwork.load(tmp)
+    out1 = net.forward([0.1, 0.2])
+    out2 = loaded.forward([0.1, 0.2])
+    assert out1 == out2
+    tmp.unlink()
+    print("✅ Save/Load Test Passed!")
+
 if __name__ == "__main__":
     test_forward()
+    test_save_load()

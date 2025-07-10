@@ -1,4 +1,6 @@
 import random
+import json
+from pathlib import Path
 from typing import List
 
 class SimpleNeuralNetwork:
@@ -34,6 +36,28 @@ class SimpleNeuralNetwork:
             for k in range(self.output_size):
                 self.w2[j][k] += learning_rate * errors[k]
 
+    def save(self, path: Path) -> None:
+        """Persist network weights to a JSON file."""
+        data = {
+            "input_size": self.input_size,
+            "hidden_size": self.hidden_size,
+            "output_size": self.output_size,
+            "w1": self.w1,
+            "w2": self.w2,
+        }
+        with open(path, "w") as f:
+            json.dump(data, f, indent=2)
+
+    @classmethod
+    def load(cls, path: Path) -> "SimpleNeuralNetwork":
+        """Load a network from a JSON file."""
+        with open(path, "r") as f:
+            data = json.load(f)
+        net = cls(data["input_size"], data["hidden_size"], data["output_size"])
+        net.w1 = data["w1"]
+        net.w2 = data["w2"]
+        return net
+
     @staticmethod
     def _relu(x: float) -> float:
         return x if x > 0 else 0.0
@@ -57,5 +81,9 @@ class SimpleNeuralNetwork:
 
 if __name__ == "__main__":
     nn = SimpleNeuralNetwork(2, 3, 1)
+    path = Path("nn-test.json")
     result = nn.forward([1.0, -1.0])
     print("Network output:", result)
+    nn.save(path)
+    reloaded = SimpleNeuralNetwork.load(path)
+    print("Reloaded output:", reloaded.forward([1.0, -1.0]))
