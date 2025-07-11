@@ -1,12 +1,13 @@
 import os
 import json
 import subprocess
-import time
+from pathlib import Path
 
-LOG_ANALYSIS_FILE = "/root/imp/logs/imp-log-analysis.json"
+ROOT = Path(__file__).resolve().parents[1]
+LOG_ANALYSIS_FILE = ROOT / "logs" / "imp-log-analysis.json"
 
 def analyze_logs():
-    print("📊 Analyzing system logs for anomalies...")
+    print("Analyzing system logs for anomalies...")
 
     anomalies = {}
 
@@ -24,8 +25,7 @@ def analyze_logs():
         with open(LOG_ANALYSIS_FILE, "w") as f:
             json.dump(anomalies, f, indent=4)
 
-        print(f"⚠️ Detected anomalies: {anomalies}")
+        print(f"Detected anomalies: {anomalies}")
 
-while True:
+if __name__ == "__main__":
     analyze_logs()
-    time.sleep(3600)  # Runs every hour
