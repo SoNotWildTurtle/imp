@@ -1,6 +1,5 @@
 import os
 import subprocess
-import time
 
 def enforce_firewall():
     print("Checking firewall settings...")
@@ -17,11 +16,10 @@ def enforce_firewall():
     # Ensure firewall is active
     firewall_status = subprocess.run("sudo ufw status", shell=True, capture_output=True, text=True).stdout
     if "inactive" in firewall_status:
-        print("⚠️ Firewall is disabled. Enabling it now...")
+        print("Firewall is disabled. Enabling it now...")
         os.system("sudo ufw enable")
 
     print("[+] Firewall rules enforced.")
 
-while True:
+if __name__ == "__main__":
     enforce_firewall()
-    time.sleep(86400)  # Runs daily

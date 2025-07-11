@@ -1,10 +1,11 @@
 import os
 import json
-import time
 import subprocess
+from pathlib import Path
 
-NODE_HEALTH_LOG = "/root/imp/logs/imp-node-health.json"
-CLUSTER_NODES_FILE = "/root/imp/config/imp-cluster-nodes.json"
+ROOT = Path(__file__).resolve().parents[1]
+NODE_HEALTH_LOG = ROOT / "logs" / "imp-node-health.json"
+CLUSTER_NODES_FILE = ROOT / "config" / "imp-cluster-nodes.json"
 
 def check_node_health():
     nodes = []
@@ -26,6 +27,5 @@ def check_node_health():
 
     print("[+] Node health check completed.")
 
-while True:
+if __name__ == "__main__":
     check_node_health()
-    time.sleep(1800)  # Runs every 30 minutes

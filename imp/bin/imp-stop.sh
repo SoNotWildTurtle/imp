@@ -9,4 +9,4 @@ pkill -f imp-code-updater.py
 pkill -f imp-security-optimizer.py
 pkill -f imp-cluster-manager.py
 
-echo "✅ IMP AI has been stopped."
+echo "IMP AI has been stopped."
