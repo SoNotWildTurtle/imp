@@ -1,0 +1,14 @@
+[
+    {
+        "timestamp": "2025-07-11 17:26:17",
+        "model_a": "/workspace/imp/imp/tmp_model1.json",
+        "model_b": "/workspace/imp/imp/tmp_model2.json",
+        "diff": {
+            "input_size_diff": 0,
+            "hidden_size_diff": 1,
+            "output_size_diff": 0,
+            "w1_diff": 0.8472877354636781,
+            "w2_diff": 1.007193333172248
+        }
+    }
+]

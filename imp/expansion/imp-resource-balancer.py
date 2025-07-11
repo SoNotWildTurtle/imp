@@ -1,10 +1,11 @@
 import os
 import json
-import time
 import subprocess
+from pathlib import Path
 
-RESOURCE_LOG = "/root/imp/logs/imp-resource-usage.json"
-CLUSTER_NODES_FILE = "/root/imp/config/imp-cluster-nodes.json"
+ROOT = Path(__file__).resolve().parents[1]
+RESOURCE_LOG = ROOT / "logs" / "imp-resource-usage.json"
+CLUSTER_NODES_FILE = ROOT / "config" / "imp-cluster-nodes.json"
 
 def get_system_usage():
     cpu_usage = os.popen("grep 'cpu ' /proc/stat").read().strip()
@@ -23,13 +24,17 @@ def balance_resources():
 
     usage = get_system_usage()
     
+    remote_dir = os.environ.get("IMP_REMOTE_DIR", "/root/imp")
+
     for node in nodes:
-        print(f"📊 Checking resource balance for {node}...")
-        subprocess.run(f"ssh {node} 'python3 /root/imp/expansion/imp-resource-balancer.py'", shell=True)
+        print(f"Checking resource balance for {node}...")
+        subprocess.run(
+            f"ssh {node} 'python3 {remote_dir}/expansion/imp-resource-balancer.py'",
+            shell=True,
+        )
 
     with open(RESOURCE_LOG, "w") as f:
         json.dump(usage, f, indent=4)
 
-while True:
+if __name__ == "__main__":
     balance_resources()
-    time.sleep(3600)  # Runs every hour

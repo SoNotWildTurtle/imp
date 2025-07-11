@@ -1,0 +1,16 @@
+IMP Intranet and Packet Sanitization Guide
+==========================================
+
+This note describes how IMP can create a lightweight intranet for secure communication among AI agents. The intranet is defined in `config/imp-intranet.json` and lists the node IPs allowed to participate.
+
+Packet modification using Scapy allows the system to sanitize traffic on the fly. For example:
+
+```python
+from scapy.all import sniff, send
+from imp.expansion.imp_intranet import sanitize_packet
+
+# Capture packets, sanitize them, and resend
+sniff(filter='tcp', prn=lambda p: send(sanitize_packet(p)))
+```
+
+This approach can be extended to route messages through a secured API that only permits whitelisted commands for communication between trusted agents.
