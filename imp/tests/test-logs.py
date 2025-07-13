@@ -7,6 +7,7 @@ LOG_FILES = [
     BASE_DIR / "logs" / "imp-activity-log.json",
     BASE_DIR / "logs" / "imp-security-log.json",
     BASE_DIR / "logs" / "imp-update-log.json",
+    BASE_DIR / "logs" / "imp-metacognition-log.json",
 ]
 
 def test_logging_system():

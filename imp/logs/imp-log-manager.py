@@ -1,14 +1,16 @@
-import os
 import json
 import time
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parents[1]
 LOG_FILES = {
-    "activity": "/root/imp/logs/imp-activity-log.json",
-    "security": "/root/imp/logs/imp-security-log.json",
-    "updates": "/root/imp/logs/imp-update-log.json",
-    "decisions": "/root/imp/logs/imp-decision-log.json",
-    "performance": "/root/imp/logs/imp-performance.json",
-    "integrity": "/root/imp/logs/imp-integrity-log.json"
+    "activity": str(BASE_DIR / "logs" / "imp-activity-log.json"),
+    "security": str(BASE_DIR / "logs" / "imp-security-log.json"),
+    "updates": str(BASE_DIR / "logs" / "imp-update-log.json"),
+    "decisions": str(BASE_DIR / "logs" / "imp-decision-log.json"),
+    "performance": str(BASE_DIR / "logs" / "imp-performance.json"),
+    "integrity": str(BASE_DIR / "logs" / "imp-integrity-log.json"),
+    "metacognition": str(BASE_DIR / "logs" / "imp-metacognition-log.json"),
 }
 
 def review_logs(log_type):
