@@ -45,6 +45,11 @@ def test_google_identity_verification():
         print("⚠️ pyotp not available. Skipping Google auth test.")
         return
     try:
+        from google.oauth2 import id_token  # type: ignore
+    except Exception:
+        print("⚠️ google auth libraries not available. Skipping Google auth test.")
+        return
+    try:
         proc = subprocess.run(
             cmd,
             input=f"{USER_NAME}\ninvalid-token\n123456\n",
@@ -74,3 +79,24 @@ test_intrusion_detection()
 test_identity_verification()
 test_google_identity_verification()
 test_cyber_defense_cycle()
+
+def test_heavy_identity_verification():
+    print("🔐 Testing Heavy Identity Verification...")
+    if pyotp is None:
+        print("⚠️ pyotp not available. Skipping heavy verification test.")
+        return
+    import hashlib
+    totp = pyotp.TOTP(USER_SECRET)
+    otp = totp.now()
+    script = BASE_DIR / "security" / "imp-heavy-identity-verifier.py"
+    proc = subprocess.run(
+        ["python3", str(script)],
+        input=f"{USER_NAME}\n{otp}\nOpenSesame\n",
+        text=True,
+        capture_output=True,
+    )
+    assert "multi-factor authentication successful" in proc.stdout.lower()
+    print("✅ Heavy Identity Verification Test Passed!")
+
+
+test_heavy_identity_verification()
