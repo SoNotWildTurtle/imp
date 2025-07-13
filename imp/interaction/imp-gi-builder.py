@@ -27,6 +27,9 @@ def create_profile():
     skills = [s.strip() for s in input("Key skills (comma separated): ").split(',') if s.strip()]
     traits = [t.strip() for t in input("Personality traits (comma separated): ").split(',') if t.strip()]
     convo_style = input("What type of conversational personality do you want her to have? ").strip()
+    focus_area = input("Primary domain of expertise: ").strip()
+    autonomy = input("How autonomous should she be (1-10)? ").strip()
+    learning_style = input("Preferred learning style: ").strip()
 
     profile = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -35,6 +38,9 @@ def create_profile():
         "skills": skills,
         "personality": traits,
         "conversation_style": convo_style,
+        "focus_area": focus_area,
+        "autonomy": autonomy,
+        "learning_style": learning_style,
         "gender": "female",
     }
 
