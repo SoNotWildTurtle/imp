@@ -1,10 +1,15 @@
 import os
 import json
-import time
 import subprocess
+import time
+from pathlib import Path
 
-CODEBASE_PATH = "/root/imp/"
-VERSION_LOG = "/root/imp/logs/imp-version-log.json"
+# 2025-06-08: Reflective Recursive Enumeration Blockchain Self-Healing idea.
+# Version tracking ensures IMP keeps memories of all code states.
+
+ROOT = Path(__file__).resolve().parents[1]
+CODEBASE_PATH = str(ROOT) + "/"
+VERSION_LOG = ROOT / "logs" / "imp-version-log.json"
 
 def list_existing_code():
     return [f for f in os.listdir(CODEBASE_PATH) if f.endswith(".py")]
@@ -14,7 +19,7 @@ def test_code_integrity():
     for file in files:
         result = subprocess.run(f"python3 -m py_compile {os.path.join(CODEBASE_PATH, file)}", shell=True)
         if result.returncode != 0:
-            print(f"⚠️ Code integrity test failed for {file}. Rolling back...")
+            print(f"Code integrity test failed for {file}. Rolling back...")
             os.rename(os.path.join(CODEBASE_PATH, f"{file}.backup"), os.path.join(CODEBASE_PATH, file))
 
 def track_versions():
@@ -25,11 +30,11 @@ def track_versions():
 
     new_version = {"timestamp": time.ctime(), "files": list_existing_code()}
     versions.append(new_version)
+    # Keep every version so IMP can restore functionality if necessary.
 
     with open(VERSION_LOG, "w") as f:
         json.dump(versions, f, indent=4)
 
-while True:
+if __name__ == "__main__":
     test_code_integrity()
     track_versions()
-    time.sleep(43200)  # Runs every 12 hours

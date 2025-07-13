@@ -1,0 +1,8 @@
+Self-Evolution Dev Notes (2025-06-08)
+-------------------------------------
+
+- Keep all code changes additive and store diffs in `self-improvement/patches`.
+- When experimenting with new neurons, log outcomes in `logs/imp-model-analysis.json`.
+- Use `imp-self-healer.py` after updates to verify file integrity.
+- Document any failures in `logs/imp-bug-report.json` so regressions can be traced.
+- Refer back to `self-evolution-plan.txt` before modifying the update scripts.

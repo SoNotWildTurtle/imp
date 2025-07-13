@@ -1,0 +1,7 @@
+[
+    {
+        "command": "echo hello",
+        "node": "localhost",
+        "status": "assigned"
+    }
+]

@@ -9,5 +9,8 @@
     "expansion": {
         "allow_cluster_scaling": true,
         "maximum_nodes": 10
+    },
+    "self_healing": {
+        "auto_apply": true
     }
 }

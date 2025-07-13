@@ -1,0 +1,28 @@
+Self-Evolution Methodology Plan (2025-06-08)
+===========================================
+
+This document outlines the next steps for IMP's self-evolution features. It draws on prior codex discussions and aims to provide clear goals with sub-goals.
+
+Goals
+-----
+1. **Automate model comparison**: track differences between the current neural network and candidate models.
+   - Sub-goal: store snapshots of network weights in `logs/imp-model-analysis.json`.
+   - Sub-goal: run `imp-model-analyzer.py` after each training cycle.
+2. **Improve offline updates**: allow the system to apply code patches without network access.
+   - Sub-goal: rely on local GGUF models in `models/`.
+   - Sub-goal: write patch files to `self-improvement/patches/` for review.
+3. **Refine metacognition**: use performance metrics to decide when evolution should occur.
+   - Sub-goal: log CPU and memory stats to `logs/imp-performance.json`.
+   - Sub-goal: evolve only when resources are available and tests pass.
+
+These steps should be implemented incrementally, ensuring tests pass after each change.
+
+4. **Introduce reinforcement pathways**: mimic biological support cells to reduce resistance along frequently used paths.
+   - Sub-goal: track pathway usage in `logs/imp-model-analysis.json`.
+   - Sub-goal: experiment with Schwann-like and oligodendrocyte-like neurons for selective reinforcement.
+
+5. **Schedule periodic patch reviews**: automatically inspect `self-improvement/patches/` and confirm each patch with the version tracker.
+   - Sub-goal: generate a changelog using `imp-version-tracker.py`.
+   - Sub-goal: revert patches automatically if unit tests fail.
+
+6. **Integrate continuous testing**: run `tests/run-all-tests.sh` after every training or update cycle and store the results.

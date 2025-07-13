@@ -1,17 +1,20 @@
 #!/bin/bash
-#chmod +x /root/imp/bin/imp-backup.sh
+# chmod +x ./imp/bin/imp-backup.sh
 
-BACKUP_FILE="/root/imp-backups/imp-backup-$(date +%F).tar.gz"
-ENCRYPTED_BACKUP="/root/imp-backups/imp-backup-$(date +%F).tar.gz.gpg"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+BACKUP_DIR="$ROOT_DIR/backups"
+BACKUP_FILE="$BACKUP_DIR/imp-backup-$(date +%F).tar.gz"
+ENCRYPTED_BACKUP="$BACKUP_FILE.gpg"
 
-mkdir -p /root/imp-backups
+mkdir -p "$BACKUP_DIR"
 
-echo "📦 Creating IMP backup..."
-tar -czf "$BACKUP_FILE" /root/imp/
+echo "Creating IMP backup..."
+tar -czf "$BACKUP_FILE" "$ROOT_DIR/"
 
-echo "🔒 Encrypting backup..."
+echo "Encrypting backup..."
 gpg --symmetric --cipher-algo AES256 --output "$ENCRYPTED_BACKUP" "$BACKUP_FILE"
 
 shred -u -z "$BACKUP_FILE"
 
-echo "✅ Backup completed and encrypted."
+echo "Backup completed and encrypted."
