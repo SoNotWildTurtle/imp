@@ -11,6 +11,7 @@ LOG_FILES = {
     "performance": str(BASE_DIR / "logs" / "imp-performance.json"),
     "integrity": str(BASE_DIR / "logs" / "imp-integrity-log.json"),
     "metacognition": str(BASE_DIR / "logs" / "imp-metacognition-log.json"),
+    "gi_implementation": str(BASE_DIR / "logs" / "imp-gi-implementation-log.json"),
 }
 
 def review_logs(log_type):

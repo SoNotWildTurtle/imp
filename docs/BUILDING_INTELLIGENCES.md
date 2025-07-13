@@ -45,3 +45,8 @@ Run `imp/interaction/imp-gi-evolution-planner.py` after verifying your identity.
 It summarizes evolution requests from each intelligence and writes the result to
 `imp/logs/imp-gi-evolution-plans.json`.
 
+## 6. Implement Approved Plans
+After reviewing the generated plans, execute `imp/interaction/imp-gi-evolution-implementer.py`.
+The implementer asks you to approve each request and its proposed plan.
+Confirmed plans are written to `imp/logs/imp-gi-implementation-log.json` for tracking.
+
