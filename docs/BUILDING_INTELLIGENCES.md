@@ -40,3 +40,8 @@ python3 imp/interaction/imp-gi-communicator.py request-evolution <alias> "what t
 
 The communication log is stored in `imp/logs/imp-gi-comm-log.json` for audit purposes.
 
+## 5. Generate Evolution Plans
+Run `imp/interaction/imp-gi-evolution-planner.py` after verifying your identity.
+It summarizes evolution requests from each intelligence and writes the result to
+`imp/logs/imp-gi-evolution-plans.json`.
+

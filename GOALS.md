@@ -19,5 +19,6 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - [x] Record perception-based personality suggestions in each profile.
 - [x] Provide a profile manager utility to list and remove intelligence profiles.
 - [x] Prevent duplicate intelligence names during profile creation.
-- [ ] Allow general intelligences to check in using safe aliases.
-- [ ] Require verification before approving evolution requests from created intelligences.
+- [x] Allow general intelligences to check in using safe aliases.
+- [x] Require verification before approving evolution requests from created intelligences.
+- [ ] Generate evolution plans for each intelligence based on communication logs.
