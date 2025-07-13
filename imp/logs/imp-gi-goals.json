@@ -1,8 +1,30 @@
 [
-    {"goal": "Create GI creator utility", "status": "pending"},
-    {"goal": "Save generated configs to imp/config/gi", "status": "pending"},
-    {"goal": "Log builds to imp-gi-build-log.json", "status": "pending"},
-    {"goal": "Provide automated tests for GI creation", "status": "pending"},
-    {"goal": "Integrate GI build workflow with goal manager", "status": "pending"}
-    ,{"goal": "Add environment and security level settings to GI profiles", "status": "pending"}
+  {
+    "goal": "Create GI creator utility",
+    "status": "pending"
+  },
+  {
+    "goal": "Save generated configs to imp/config/gi",
+    "status": "pending"
+  },
+  {
+    "goal": "Log builds to imp-gi-build-log.json",
+    "status": "pending"
+  },
+  {
+    "goal": "Provide automated tests for GI creation",
+    "status": "pending"
+  },
+  {
+    "goal": "Integrate GI build workflow with goal manager",
+    "status": "pending"
+  },
+  {
+    "goal": "Add environment and security level settings to GI profiles",
+    "status": "pending"
+  },
+  {
+    "goal": "Enable conversation-driven GI builder",
+    "status": "pending"
+  }
 ]

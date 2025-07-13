@@ -12,3 +12,5 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - Expand documentation to explain how users can request and build new intelligences.
 - Ensure each intelligence config supports ongoing self-evolution.
 - Offer environment and security level options when creating intelligence profiles.
+- Enable conversation-driven creation of intelligence profiles so users can build
+  them interactively during chat sessions.
