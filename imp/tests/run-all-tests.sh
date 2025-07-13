@@ -13,6 +13,7 @@ python3 "$SCRIPT_DIR/test-self-improvement.py"
 python3 "$SCRIPT_DIR/test-code-quality.py"
 python3 "$SCRIPT_DIR/test-metacognition.py"
 python3 "$SCRIPT_DIR/test-interaction.py"
+python3 "$SCRIPT_DIR/test-gi-builder.py"
 python3 "$SCRIPT_DIR/test-config.py"
 python3 "$SCRIPT_DIR/test-logs.py"
 
