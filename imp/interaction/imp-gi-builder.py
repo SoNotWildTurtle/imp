@@ -39,6 +39,8 @@ def create_profile():
     focus_area = input("Primary domain of expertise: ").strip()
     autonomy = input("How autonomous should she be (1-10)? ").strip()
     learning_style = input("Preferred learning style: ").strip()
+    environment = input("Deployment environment (cloud/local/hybrid): ").strip()
+    security_level = input("Desired security level (1-10): ").strip()
 
     profile = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -50,6 +52,8 @@ def create_profile():
         "focus_area": focus_area,
         "autonomy": autonomy,
         "learning_style": learning_style,
+        "environment": environment,
+        "security_level": security_level,
         "gender": "female",
     }
 

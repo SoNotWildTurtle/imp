@@ -4,4 +4,5 @@
     {"goal": "Log builds to imp-gi-build-log.json", "status": "pending"},
     {"goal": "Provide automated tests for GI creation", "status": "pending"},
     {"goal": "Integrate GI build workflow with goal manager", "status": "pending"}
+    ,{"goal": "Add environment and security level settings to GI profiles", "status": "pending"}
 ]

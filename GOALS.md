@@ -11,3 +11,4 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - Lock users out after repeated failed authentication attempts.
 - Expand documentation to explain how users can request and build new intelligences.
 - Ensure each intelligence config supports ongoing self-evolution.
+- Offer environment and security level options when creating intelligence profiles.

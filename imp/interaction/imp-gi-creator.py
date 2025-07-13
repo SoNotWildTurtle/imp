@@ -66,6 +66,8 @@ def build_intelligence():
         "focus_area": profile.get("focus_area", ""),
         "autonomy": profile.get("autonomy", ""),
         "learning_style": profile.get("learning_style", ""),
+        "environment": profile.get("environment", ""),
+        "security_level": profile.get("security_level", ""),
         "created": time.strftime("%Y-%m-%d %H:%M:%S"),
     }
     with open(config_path, "w") as f:

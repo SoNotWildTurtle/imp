@@ -27,7 +27,7 @@ def ensure_profile():
         "Alexander Raymond Graham (Minc)\n"
         f"{otp}\n"
         "OpenSesame\n"
-        "CreatorGI\nCreator test\nnetwork,ai\ncurious,helpful\nchatty\nAI research\n5\nvisual\n"
+        "CreatorGI\nCreator test\nnetwork,ai\ncurious,helpful\nchatty\nAI research\n5\nvisual\ncloud\n9\n"
     )
     subprocess.run([
         "python3",
@@ -57,6 +57,10 @@ def test_gi_creation():
         logs = json.load(f)
     assert after_configs >= before_configs + 1
     assert logs and logs[-1]["profile"]
+    cfg_path = next(CONFIG_DIR.glob("*.json"))
+    with open(cfg_path, "r") as f:
+        cfg = json.load(f)
+    assert "environment" in cfg and "security_level" in cfg
     print("✅ GI Creator Test Passed!")
 
 

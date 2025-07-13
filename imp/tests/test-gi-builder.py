@@ -30,15 +30,18 @@ def test_gi_profile_creation():
         "Alexander Raymond Graham (Minc)\n"  # user name
         f"{otp}\n"  # otp code
         "OpenSesame\n"  # passphrase
-        "TestGI\nA test GI\nsecurity,data\ncaring,smart\nformal\ncybersecurity\n7\ncollaborative\n"
+        "TestGI\nA test GI\nsecurity,data\ncaring,smart\nformal\ncybersecurity\n7\ncollaborative\ncloud\n8\n"
     )
     subprocess.run([
         "python3",
         str(script)
     ], input=input_data, text=True, capture_output=True)
     with open(PROFILE_FILE, "r") as f:
-        after = len(json.load(f))
+        profiles = json.load(f)
+        after = len(profiles)
     assert after == before + 1
+    last = profiles[-1]
+    assert "environment" in last and "security_level" in last
     print("✅ GI Builder Test Passed!")
 
 
