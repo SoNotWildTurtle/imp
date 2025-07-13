@@ -39,6 +39,10 @@ def create_profile():
     if not verify_user():
         return
     name = input("Intelligence name: ").strip()
+    existing = [p.get("name") for p in load_profiles()]
+    if name in existing:
+        print("🚫 A profile with this name already exists.")
+        return
     description = input("Short description: ").strip()
     skills = [s.strip() for s in input("Key skills (comma separated): ").split(',') if s.strip()]
     traits = [t.strip() for t in input("Personality traits (comma separated): ").split(',') if t.strip()]

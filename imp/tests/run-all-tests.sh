@@ -19,6 +19,7 @@ python3 "$SCRIPT_DIR/test-gi-builder.py"
 python3 "$SCRIPT_DIR/test-gi-conversation-builder.py"
 python3 "$SCRIPT_DIR/test-gi-creator.py"
 python3 "$SCRIPT_DIR/test-gi-goal-viewer.py"
+python3 "$SCRIPT_DIR/test-gi-profile-manager.py"
 python3 "$SCRIPT_DIR/test-config.py"
 python3 "$SCRIPT_DIR/test-logs.py"
 

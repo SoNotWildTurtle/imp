@@ -57,9 +57,15 @@ def build_via_conversation():
     name, _ = chatbot.load_personality()
     chatbot.append_history("imp", f"{name}: Let's design your new intelligence.")
 
+    profiles = load_profiles()
+    chosen_name = ask("What will you name this intelligence?")
+    if any(p.get("name") == chosen_name for p in profiles):
+        print("🚫 A profile with this name already exists.")
+        return
+
     profile = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-        "name": ask("What will you name this intelligence?"),
+        "name": chosen_name,
         "description": ask("Give a short description of her purpose:"),
         "skills": [s.strip() for s in ask("List key skills (comma separated):").split(',') if s.strip()],
         "personality": [t.strip() for t in ask("Desired personality traits (comma separated):").split(',') if t.strip()],

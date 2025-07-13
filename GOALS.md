@@ -17,3 +17,5 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - [x] Analyze chat tone to adjust personality of created intelligences.
 - [x] Ask for safety guidelines when building profiles.
 - [x] Record perception-based personality suggestions in each profile.
+- [ ] Provide a profile manager utility to list and remove intelligence profiles.
+- [ ] Prevent duplicate intelligence names during profile creation.
