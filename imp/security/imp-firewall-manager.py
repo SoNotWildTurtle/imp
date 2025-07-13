@@ -1,8 +1,13 @@
 import os
+import shutil
 import subprocess
 
 def enforce_firewall():
     print("Checking firewall settings...")
+
+    if not shutil.which("ufw"):
+        print("ufw command not found, skipping firewall configuration")
+        return
 
     firewall_rules = [
         "sudo ufw default deny incoming",
