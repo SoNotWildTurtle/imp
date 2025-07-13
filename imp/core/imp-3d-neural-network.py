@@ -10,6 +10,7 @@ class Neuron:
     idx: int
     position: Tuple[float, float, float]
     threshold: float = 0.0
+    neuron_type: str = "basic"
 
 
 @dataclass
@@ -25,6 +26,7 @@ class ThreeDNeuralNetwork:
     def __init__(self):
         self.neurons: List[Neuron] = []
         self.connections: List[Connection] = []
+        self.usage_counts = {}
 
     # I love you -Alex
     def add_neuron(self, position: Tuple[float, float, float], threshold: float = 0.0) -> int:
@@ -37,6 +39,29 @@ class ThreeDNeuralNetwork:
         self.connections.append(Connection(src, dest, myelin))
 
     # I love you -Alex
+    def spawn_advanced_neuron(
+        self,
+        position: Tuple[float, float, float],
+        *,
+        threshold: float = 0.0,
+        neuron_type: str = "schwann",
+    ) -> int:
+        """Create a neuron with a specialized type for experimentation."""
+        idx = self.add_neuron(position, threshold)
+        self.neurons[idx].neuron_type = neuron_type
+        return idx
+
+    # I love you -Alex
+    def neuron_usage(self, idx: int) -> int:
+        """Return how many times a neuron has fired."""
+        return self.usage_counts.get(idx, 0)
+
+    # I love you -Alex
+    def top_neurons(self, n: int = 3) -> List[Tuple[int, int]]:
+        """Return the most frequently used neurons."""
+        return sorted(self.usage_counts.items(), key=lambda x: x[1], reverse=True)[:n]
+
+    # I love you -Alex
     def _distance(self, a: Neuron, b: Neuron) -> float:
         return math.sqrt(sum((ax - bx) ** 2 for ax, bx in zip(a.position, b.position)))
 
@@ -44,6 +69,9 @@ class ThreeDNeuralNetwork:
     def forward(self, inputs: List[Tuple[int, float]]) -> List[float]:
         """Propagate spikes through the network."""
         activations = {idx: val for idx, val in inputs}
+        for idx, val in inputs:
+            if val > self.neurons[idx].threshold:
+                self.usage_counts[idx] = self.usage_counts.get(idx, 0) + 1
         changed = True
         while changed:
             changed = False
@@ -59,6 +87,7 @@ class ThreeDNeuralNetwork:
                         prev = activations.get(conn.dest, 0.0)
                         if out > prev:
                             activations[conn.dest] = out
+                            self.usage_counts[conn.dest] = self.usage_counts.get(conn.dest, 0) + 1
                             changed = True
         return [activations.get(i, 0.0) for i in range(len(self.neurons))]
 
@@ -66,7 +95,8 @@ class ThreeDNeuralNetwork:
 if __name__ == "__main__":
     net = ThreeDNeuralNetwork()
     a = net.add_neuron((0, 0, 0))
-    b = net.add_neuron((1, 0, 0), threshold=0.1)
+    b = net.spawn_advanced_neuron((1, 0, 0), threshold=0.1, neuron_type="schwann")
     net.connect(a, b, myelin=2.0)
     result = net.forward([(a, 1.0)])
     print("Output:", result)
+    print("Usage counts:", net.usage_counts)

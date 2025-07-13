@@ -51,6 +51,7 @@ imp/config/imp-user-registration.json - Tracks registered operators.
 imp/config/imp-credentials.json - Usernames with hashed passwords for login.
 imp/config/imp-google-oauth.json - OAuth client secrets for automated Google verification.
 imp/core/imp-3d-neural-network.py - Experimental 3D neural network implementation.
+  Supports `spawn_advanced_neuron` for creating specialized neurons and tracking usage patterns.
 imp/core/imp-decision-forecaster.py - Predicts outcomes of potential goals.
 imp/core/imp-execute.py - Main runtime harness launching submodules.
 imp/core/imp-goal-chat.py - CLI to discuss goals via ChatGPT.

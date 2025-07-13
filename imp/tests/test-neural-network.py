@@ -1,5 +1,6 @@
 from pathlib import Path
 import importlib.util
+import random
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULE_PATH = ROOT / "core" / "imp-neural-network.py"
@@ -29,6 +30,7 @@ def test_save_load():
 
 def test_training():
     print("Testing Neural Network Training...")
+    random.seed(0)
     net = module.SimpleNeuralNetwork(2, 2, 1)
     data = [([0, 0], [0]), ([0, 1], [1]), ([1, 0], [1]), ([1, 1], [1])]
     before = net.forward([1, 0])[0]

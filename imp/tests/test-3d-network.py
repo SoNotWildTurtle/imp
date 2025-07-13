@@ -13,10 +13,11 @@ def test_basic_3d_network():
     print("Testing 3D Neural Network...")
     net = module.ThreeDNeuralNetwork()
     a = net.add_neuron((0, 0, 0))
-    b = net.add_neuron((1, 0, 0), threshold=0.1)
+    b = net.spawn_advanced_neuron((1, 0, 0), threshold=0.1, neuron_type="schwann")
     net.connect(a, b, myelin=2.0)
     out = net.forward([(a, 1.0)])
     assert len(out) == 2 and out[1] > 0
+    assert net.neuron_usage(b) > 0
     print("3D Neural Network Test Passed!")
 
 

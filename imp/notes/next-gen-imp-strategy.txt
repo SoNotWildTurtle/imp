@@ -109,6 +109,13 @@ Alongside advanced neural design, IMP's automated defense cycle now bundles
 firewall hardening, integrity checks, threat monitoring, and vulnerability scans
 into one routine. This helps mitigate poisoning attempts or system breaches.
 
+### Advanced Neuron Types
+The `spawn_advanced_neuron` helper allows IMP to create neurons with custom
+types such as "schwann" or "oligodendrocyte". Usage counts are recorded whenever
+these neurons fire so emerging patterns can be studied. Calling
+`top_neurons()` returns the most active neuron indexes, guiding future
+experiments and reinforcement decisions.
+
 To keep the simpler feedforward network useful, implement a tiny backpropagation
 loop. A new `train` method lets IMP refine its weights on short datasets and can
 serve as a stepping stone toward more complex reinforcement techniques.
