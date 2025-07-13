@@ -16,7 +16,7 @@ def test_gi_profile_creation():
     subprocess.run([
         "python3",
         str(script)
-    ], input="TestGI\nA test GI\nsecurity,data\ncaring,smart\n", text=True, capture_output=True)
+    ], input="TestGI\nA test GI\nsecurity,data\ncaring,smart\nformal\n", text=True, capture_output=True)
     with open(PROFILE_FILE, "r") as f:
         after = len(json.load(f))
     assert after == before + 1

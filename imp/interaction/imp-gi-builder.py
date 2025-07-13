@@ -26,6 +26,7 @@ def create_profile():
     description = input("Short description: ").strip()
     skills = [s.strip() for s in input("Key skills (comma separated): ").split(',') if s.strip()]
     traits = [t.strip() for t in input("Personality traits (comma separated): ").split(',') if t.strip()]
+    convo_style = input("What type of conversational personality do you want her to have? ").strip()
 
     profile = {
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -33,6 +34,8 @@ def create_profile():
         "description": description,
         "skills": skills,
         "personality": traits,
+        "conversation_style": convo_style,
+        "gender": "female",
     }
 
     profiles = load_profiles()
