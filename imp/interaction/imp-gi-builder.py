@@ -1,6 +1,13 @@
 from pathlib import Path
 import json
 import time
+import importlib.util
+
+HEAVY_VERIFIER = Path(__file__).resolve().parents[1] / "security" / "imp-heavy-identity-verifier.py"
+spec = importlib.util.spec_from_file_location("heavy", HEAVY_VERIFIER)
+heavy = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(heavy)
+verify_user = heavy.verify_user
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 PROFILE_FILE = BASE_DIR / "config" / "imp-general-intelligences.json"
@@ -22,6 +29,8 @@ def save_profiles(profiles):
 
 
 def create_profile():
+    if not verify_user():
+        return
     name = input("Intelligence name: ").strip()
     description = input("Short description: ").strip()
     skills = [s.strip() for s in input("Key skills (comma separated): ").split(',') if s.strip()]
