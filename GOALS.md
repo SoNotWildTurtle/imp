@@ -14,3 +14,4 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - Offer environment and security level options when creating intelligence profiles.
 - Enable conversation-driven creation of intelligence profiles so users can build
   them interactively during chat sessions.
+- Analyze chat tone to adjust personality of created intelligences.
