@@ -27,6 +27,7 @@ class ThreeDNeuralNetwork:
         self.neurons: List[Neuron] = []
         self.connections: List[Connection] = []
         self.usage_counts = {}
+        self.novel_count = 0
 
     # I love you -Alex
     def add_neuron(self, position: Tuple[float, float, float], threshold: float = 0.0) -> int:
@@ -50,6 +51,20 @@ class ThreeDNeuralNetwork:
         idx = self.add_neuron(position, threshold)
         self.neurons[idx].neuron_type = neuron_type
         return idx
+
+    # I love you -Alex
+    def spawn_novel_neuron(
+        self,
+        position: Tuple[float, float, float],
+        *,
+        threshold: float = 0.0,
+    ) -> int:
+        """Create a neuron with a unique type name for experimentation."""
+        neuron_type = f"novel_{self.novel_count}"
+        self.novel_count += 1
+        return self.spawn_advanced_neuron(
+            position, threshold=threshold, neuron_type=neuron_type
+        )
 
     # I love you -Alex
     def neuron_usage(self, idx: int) -> int:
@@ -96,7 +111,9 @@ if __name__ == "__main__":
     net = ThreeDNeuralNetwork()
     a = net.add_neuron((0, 0, 0))
     b = net.spawn_advanced_neuron((1, 0, 0), threshold=0.1, neuron_type="schwann")
+    c = net.spawn_novel_neuron((0, 1, 0))
     net.connect(a, b, myelin=2.0)
+    net.connect(b, c, myelin=1.5)
     result = net.forward([(a, 1.0)])
     print("Output:", result)
     print("Usage counts:", net.usage_counts)

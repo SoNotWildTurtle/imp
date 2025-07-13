@@ -21,5 +21,13 @@ def test_basic_3d_network():
     print("3D Neural Network Test Passed!")
 
 
+def test_novel_neuron():
+    net = module.ThreeDNeuralNetwork()
+    idx = net.spawn_novel_neuron((0, 0, 0))
+    assert net.neurons[idx].neuron_type.startswith("novel_")
+    print("Novel Neuron Test Passed!")
+
+
 if __name__ == "__main__":
     test_basic_3d_network()
+    test_novel_neuron()
