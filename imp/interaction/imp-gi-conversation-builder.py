@@ -19,6 +19,11 @@ spec2.loader.exec_module(heavy)
 verify_user = heavy.verify_user
 sys.path.append(str(BASE_DIR / "core"))
 from imp_gi_goal_updater import update_goal_status
+spec_pa = importlib.util.spec_from_file_location(
+    "perception", BASE_DIR / "interaction" / "imp-perception-analyzer.py"
+)
+perception = importlib.util.module_from_spec(spec_pa)
+spec_pa.loader.exec_module(perception)
 
 
 def load_profiles():
@@ -64,13 +69,19 @@ def build_via_conversation():
         "learning_style": ask("Preferred learning style:"),
         "environment": ask("Deployment environment (cloud/local/hybrid):"),
         "security_level": ask("Desired security level (1-10):"),
+        "safety_guidelines": ask("Any safety guidelines or restrictions?"),
         "gender": "female",
     }
+    analysis = perception.analyze_perception()
+    if analysis:
+        profile["suggested_personality"] = analysis.get("suggested_personality")
 
     profiles = load_profiles()
     profiles.append(profile)
     save_profiles(profiles)
     update_goal_status("conversation-driven GI builder")
+    update_goal_status("safety guidelines")
+    update_goal_status("perception-based personality")
     update_goal_status("Integrate GI build workflow")
     print(f"[+] Conversation profile created for {profile['name']}")
 

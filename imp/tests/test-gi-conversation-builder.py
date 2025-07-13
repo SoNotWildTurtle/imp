@@ -30,7 +30,7 @@ def test_conversation_profile_creation():
         "Alexander Raymond Graham (Minc)\n"
         f"{otp}\n"
         "OpenSesame\n"
-        "ConvoGI\nLearning AI\nanalysis,security\nhelpful,friendly\nformal\nAI dev\n8\nvisual\ncloud\n9\n"
+        "ConvoGI\nLearning AI\nanalysis,security\nhelpful,friendly\nformal\nAI dev\n8\nvisual\ncloud\n9\nFollow best practices\n"
     )
     subprocess.run(["python3", str(script)], input=input_data, text=True, capture_output=True)
     with open(PROFILE_FILE, 'r') as f:
@@ -39,6 +39,7 @@ def test_conversation_profile_creation():
     assert after == before + 1
     last = profiles[-1]
     assert last.get('name') == 'ConvoGI'
+    assert 'safety_guidelines' in last and 'suggested_personality' in last
     GOALS_FILE = BASE_DIR / 'logs' / 'imp-gi-goals.json'
     with open(GOALS_FILE, 'r') as g:
         goals = json.load(g)

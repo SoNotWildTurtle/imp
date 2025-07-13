@@ -6,7 +6,9 @@ This guide explains the typical workflow.
 ## 1. Create a Profile
 Run `imp/interaction/imp-gi-builder.py` to create a profile. You will be prompted
 for multi‑factor authentication and then for details such as skills,
-personality traits, deployment environment and security level.
+personality traits, deployment environment, security level and any safety
+guidelines you wish to enforce. The builder also analyzes recent chat history to
+suggest a suitable personality based on conversation tone.
 
 Alternatively, `imp/interaction/imp-gi-conversation-builder.py` guides you
 through the same questions in a conversational style, recording your answers in

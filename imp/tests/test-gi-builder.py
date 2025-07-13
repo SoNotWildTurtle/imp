@@ -30,7 +30,7 @@ def test_gi_profile_creation():
         "Alexander Raymond Graham (Minc)\n"  # user name
         f"{otp}\n"  # otp code
         "OpenSesame\n"  # passphrase
-        "TestGI\nA test GI\nsecurity,data\ncaring,smart\nformal\ncybersecurity\n7\ncollaborative\ncloud\n8\n"
+        "TestGI\nA test GI\nsecurity,data\ncaring,smart\nformal\ncybersecurity\n7\ncollaborative\ncloud\n8\nFollow best practices\n"
     )
     subprocess.run([
         "python3",
@@ -42,6 +42,7 @@ def test_gi_profile_creation():
     assert after == before + 1
     last = profiles[-1]
     assert "environment" in last and "security_level" in last
+    assert "safety_guidelines" in last and "suggested_personality" in last
     GOALS_FILE = BASE_DIR / "logs" / "imp-gi-goals.json"
     with open(GOALS_FILE, "r") as g:
         goals = json.load(g)

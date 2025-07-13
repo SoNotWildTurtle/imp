@@ -15,3 +15,5 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - [x] Enable conversation-driven creation of intelligence profiles so users can build
     them interactively during chat sessions.
 - [x] Analyze chat tone to adjust personality of created intelligences.
+- [x] Ask for safety guidelines when building profiles.
+- [x] Record perception-based personality suggestions in each profile.

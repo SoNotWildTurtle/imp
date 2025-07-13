@@ -71,6 +71,7 @@ def analyze_perception():
     }
     save_perception(entry)
     print(f"[+] Perception analysis recorded with tone: {tone}")
+    return entry
 
 
 if __name__ == "__main__":

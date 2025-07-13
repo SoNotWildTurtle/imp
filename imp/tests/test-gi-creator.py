@@ -27,7 +27,7 @@ def ensure_profile():
         "Alexander Raymond Graham (Minc)\n"
         f"{otp}\n"
         "OpenSesame\n"
-        "CreatorGI\nCreator test\nnetwork,ai\ncurious,helpful\nchatty\nAI research\n5\nvisual\ncloud\n9\n"
+        "CreatorGI\nCreator test\nnetwork,ai\ncurious,helpful\nchatty\nAI research\n5\nvisual\ncloud\n9\nFollow best practices\n"
     )
     subprocess.run([
         "python3",
@@ -61,6 +61,7 @@ def test_gi_creation():
     with open(cfg_path, "r") as f:
         cfg = json.load(f)
     assert "environment" in cfg and "security_level" in cfg
+    assert "safety_guidelines" in cfg and "suggested_personality" in cfg
     GOALS_FILE = BASE_DIR / "logs" / "imp-gi-goals.json"
     with open(GOALS_FILE, "r") as g:
         goals = json.load(g)
