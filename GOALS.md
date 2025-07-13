@@ -6,10 +6,10 @@ To create new general intelligences tailored to user requests, IMP must accompli
 - [x] Store generated configurations under `imp/config/gi/` for easy management.
 - [x] Track build activity in `imp/logs/imp-gi-build-log.json`.
 - [x] Provide tests verifying that a new configuration file is produced and logged.
-- [ ] Integrate the GI build workflow with the existing goal manager so progress can be monitored.
+- [x] Integrate the GI build workflow with the existing goal manager so progress can be monitored.
 - [x] Require multi-factor verification before profiles are created or built.
 - [x] Lock users out after repeated failed authentication attempts.
-- [ ] Expand documentation to explain how users can request and build new intelligences.
+- [x] Expand documentation to explain how users can request and build new intelligences.
 - [x] Ensure each intelligence config supports ongoing self-evolution.
 - [x] Offer environment and security level options when creating intelligence profiles.
 - [x] Enable conversation-driven creation of intelligence profiles so users can build
