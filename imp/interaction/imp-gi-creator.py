@@ -2,12 +2,15 @@ from pathlib import Path
 import json
 import time
 import importlib.util
+import sys
 
 HEAVY_VERIFIER = Path(__file__).resolve().parents[1] / "security" / "imp-heavy-identity-verifier.py"
 spec = importlib.util.spec_from_file_location("heavy", HEAVY_VERIFIER)
 heavy = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(heavy)
 verify_user = heavy.verify_user
+sys.path.append(str(Path(__file__).resolve().parents[1] / "core"))
+from imp_gi_goal_updater import update_goal_status
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 PROFILE_FILE = BASE_DIR / "config" / "imp-general-intelligences.json"
@@ -73,6 +76,11 @@ def build_intelligence():
     with open(config_path, "w") as f:
         json.dump(config, f, indent=4)
     save_log({"timestamp": config["created"], "profile": profile["name"]})
+    update_goal_status("Create GI creator utility")
+    update_goal_status("Save generated configs")
+    update_goal_status("Log builds")
+    update_goal_status("Provide automated tests")
+    update_goal_status("Integrate GI build workflow")
     print(f"[+] Built intelligence config at {config_path}")
 
 

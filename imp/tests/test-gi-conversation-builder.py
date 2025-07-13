@@ -39,6 +39,10 @@ def test_conversation_profile_creation():
     assert after == before + 1
     last = profiles[-1]
     assert last.get('name') == 'ConvoGI'
+    GOALS_FILE = BASE_DIR / 'logs' / 'imp-gi-goals.json'
+    with open(GOALS_FILE, 'r') as g:
+        goals = json.load(g)
+    assert any(e['status'] == 'complete' for e in goals if 'conversation-driven' in e['goal'])
     print("✅ GI Conversation Builder Test Passed!")
 
 

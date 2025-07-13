@@ -2,12 +2,15 @@ from pathlib import Path
 import json
 import time
 import importlib.util
+import sys
 
 HEAVY_VERIFIER = Path(__file__).resolve().parents[1] / "security" / "imp-heavy-identity-verifier.py"
 spec = importlib.util.spec_from_file_location("heavy", HEAVY_VERIFIER)
 heavy = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(heavy)
 verify_user = heavy.verify_user
+sys.path.append(str(Path(__file__).resolve().parents[1] / "core"))
+from imp_gi_goal_updater import update_goal_status
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 PROFILE_FILE = BASE_DIR / "config" / "imp-general-intelligences.json"
@@ -60,6 +63,8 @@ def create_profile():
     profiles = load_profiles()
     profiles.append(profile)
     save_profiles(profiles)
+    update_goal_status("environment and security level")
+    update_goal_status("Integrate GI build workflow")
     print(f"[+] Created intelligence profile for {name}")
 
 

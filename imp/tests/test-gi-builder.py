@@ -42,6 +42,10 @@ def test_gi_profile_creation():
     assert after == before + 1
     last = profiles[-1]
     assert "environment" in last and "security_level" in last
+    GOALS_FILE = BASE_DIR / "logs" / "imp-gi-goals.json"
+    with open(GOALS_FILE, "r") as g:
+        goals = json.load(g)
+    assert any(e["status"] == "complete" for e in goals if "environment" in e["goal"])
     print("✅ GI Builder Test Passed!")
 
 

@@ -61,6 +61,10 @@ def test_gi_creation():
     with open(cfg_path, "r") as f:
         cfg = json.load(f)
     assert "environment" in cfg and "security_level" in cfg
+    GOALS_FILE = BASE_DIR / "logs" / "imp-gi-goals.json"
+    with open(GOALS_FILE, "r") as g:
+        goals = json.load(g)
+    assert any(e["status"] == "complete" for e in goals if "creator utility" in e["goal"])
     print("✅ GI Creator Test Passed!")
 
 

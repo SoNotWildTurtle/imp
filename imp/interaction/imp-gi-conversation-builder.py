@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 import time
 import importlib.util
+import sys
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 CHATBOT_PATH = BASE_DIR / "interaction" / "imp-chatbot.py"
@@ -16,6 +17,8 @@ spec2 = importlib.util.spec_from_file_location("heavy", HEAVY_VERIFIER)
 heavy = importlib.util.module_from_spec(spec2)
 spec2.loader.exec_module(heavy)
 verify_user = heavy.verify_user
+sys.path.append(str(BASE_DIR / "core"))
+from imp_gi_goal_updater import update_goal_status
 
 
 def load_profiles():
@@ -67,6 +70,8 @@ def build_via_conversation():
     profiles = load_profiles()
     profiles.append(profile)
     save_profiles(profiles)
+    update_goal_status("conversation-driven GI builder")
+    update_goal_status("Integrate GI build workflow")
     print(f"[+] Conversation profile created for {profile['name']}")
 
 
