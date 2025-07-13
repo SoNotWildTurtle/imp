@@ -56,7 +56,7 @@ imp/core/imp-execute.py - Main runtime harness launching submodules.
 imp/core/imp-goal-chat.py - CLI to discuss goals via ChatGPT.
 imp/core/imp-goal-manager.py - Stores, prioritizes and retrieves goals.
 imp/core/imp-learning-memory.py - Keeps a log of learned plans and results.
-imp/core/imp-neural-network.py - Minimal feedforward network for experiments.
+imp/core/imp-neural-network.py - Feedforward network with basic backpropagation and training helpers.
 imp/core/imp-voice.py - Provides voice synthesis with selectable voices, rate, and volume.
 imp/core/imp-speech-to-text.py - Converts speech from a microphone or audio file to text.
 imp/core/imp-mood-manager.py - Tracks the AI's mood, gradually returns to a slightly positive baseline, and updates mood based on events.

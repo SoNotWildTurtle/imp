@@ -109,6 +109,10 @@ Alongside advanced neural design, IMP's automated defense cycle now bundles
 firewall hardening, integrity checks, threat monitoring, and vulnerability scans
 into one routine. This helps mitigate poisoning attempts or system breaches.
 
+To keep the simpler feedforward network useful, implement a tiny backpropagation
+loop. A new `train` method lets IMP refine its weights on short datasets and can
+serve as a stepping stone toward more complex reinforcement techniques.
+
 ### Further Reading: Spatial‑Temporal Neural Design
 To keep up with cutting-edge research on 3D and spatio‑temporal neural networks,
 consult Google Scholar using search phrases such as "spatial-temporal neural

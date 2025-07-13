@@ -1,7 +1,7 @@
 import random
 import json
 from pathlib import Path
-from typing import List
+from typing import List, Iterable, Tuple
 
 class SimpleNeuralNetwork:
     """A minimal feedforward neural network for future experimentation."""
@@ -26,15 +26,31 @@ class SimpleNeuralNetwork:
             self.w1[i].append(random.uniform(-1, 1))
         self.w2.append([random.uniform(-1, 1) for _ in range(self.output_size)])
 
-    def update_weights(self, inputs: List[float], target: List[float], learning_rate: float = 0.1):
-        """Very basic weight update using output error."""
-        outputs = self.forward(inputs)
+    def update_weights(self, inputs: List[float], target: List[float], learning_rate: float = 0.1) -> None:
+        """Backpropagate error and adjust both weight matrices."""
+        outputs, hidden = self.forward(inputs, return_hidden=True)
         if len(target) != self.output_size:
             raise ValueError("Target vector size must match output size")
         errors = [target[i] - outputs[i] for i in range(self.output_size)]
+        # update w2
         for j in range(self.hidden_size):
             for k in range(self.output_size):
-                self.w2[j][k] += learning_rate * errors[k]
+                self.w2[j][k] += learning_rate * errors[k] * hidden[j]
+        # backpropagate through ReLU
+        hidden_errors = []
+        for j in range(self.hidden_size):
+            err = sum(errors[k] * self.w2[j][k] for k in range(self.output_size))
+            hidden_errors.append(err if hidden[j] > 0 else 0.0)
+        # update w1
+        for i in range(self.input_size):
+            for j in range(self.hidden_size):
+                self.w1[i][j] += learning_rate * hidden_errors[j] * inputs[i]
+
+    def train(self, examples: Iterable[Tuple[List[float], List[float]]], epochs: int = 1, learning_rate: float = 0.1) -> None:
+        """Train the network on multiple examples."""
+        for _ in range(epochs):
+            for inputs, target in examples:
+                self.update_weights(inputs, target, learning_rate)
 
     def save(self, path: Path) -> None:
         """Persist network weights to a JSON file."""
@@ -62,7 +78,7 @@ class SimpleNeuralNetwork:
     def _relu(x: float) -> float:
         return x if x > 0 else 0.0
 
-    def forward(self, inputs: List[float]) -> List[float]:
+    def forward(self, inputs: List[float], *, return_hidden: bool = False):
         if len(inputs) != self.input_size:
             raise ValueError("Input vector size does not match network input size")
         hidden = []
@@ -77,13 +93,17 @@ class SimpleNeuralNetwork:
             for j in range(self.hidden_size):
                 total += hidden[j] * self.w2[j][k]
             outputs.append(total)
+        if return_hidden:
+            return outputs, hidden
         return outputs
 
 if __name__ == "__main__":
-    nn = SimpleNeuralNetwork(2, 3, 1)
+    nn = SimpleNeuralNetwork(2, 2, 1)
+    data = [([0, 0], [0]), ([0, 1], [1]), ([1, 0], [1]), ([1, 1], [1])]
+    for _ in range(100):
+        nn.train(data, epochs=1, learning_rate=0.1)
+    print("Trained output for [1, 0] ->", nn.forward([1, 0]))
     path = Path("nn-test.json")
-    result = nn.forward([1.0, -1.0])
-    print("Network output:", result)
     nn.save(path)
     reloaded = SimpleNeuralNetwork.load(path)
-    print("Reloaded output:", reloaded.forward([1.0, -1.0]))
+    print("Reloaded output:", reloaded.forward([1, 0]))

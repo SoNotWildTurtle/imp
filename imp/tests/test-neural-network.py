@@ -27,6 +27,18 @@ def test_save_load():
     tmp.unlink()
     print("Save/Load Test Passed!")
 
+def test_training():
+    print("Testing Neural Network Training...")
+    net = module.SimpleNeuralNetwork(2, 2, 1)
+    data = [([0, 0], [0]), ([0, 1], [1]), ([1, 0], [1]), ([1, 1], [1])]
+    before = net.forward([1, 0])[0]
+    for _ in range(50):
+        net.train(data, epochs=1)
+    after = net.forward([1, 0])[0]
+    assert abs(after - 1) < abs(before - 1)
+    print("Training Test Passed!")
+
 if __name__ == "__main__":
     test_forward()
     test_save_load()
+    test_training()
