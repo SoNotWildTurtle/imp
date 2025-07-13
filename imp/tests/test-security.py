@@ -100,3 +100,33 @@ def test_heavy_identity_verification():
 
 
 test_heavy_identity_verification()
+
+def test_heavy_lockout():
+    print("🔐 Testing Heavy Verification Lockout...")
+    if pyotp is None:
+        print("⚠️ pyotp not available. Skipping lockout test.")
+        return
+    lock_file = BASE_DIR / "logs" / "imp-lockout-log.json"
+    if lock_file.exists():
+        lock_file.unlink()
+    script = BASE_DIR / "security" / "imp-heavy-identity-verifier.py"
+    for _ in range(3):
+        subprocess.run(
+            ["python3", str(script)],
+            input=f"{USER_NAME}\n000000\nwrong\n",
+            text=True,
+            capture_output=True,
+        )
+    proc = subprocess.run(
+        ["python3", str(script)],
+        input=f"{USER_NAME}\n000000\nwrong\n",
+        text=True,
+        capture_output=True,
+    )
+    assert "account locked" in proc.stdout.lower()
+    if lock_file.exists():
+        lock_file.unlink()
+    print("✅ Heavy Verification Lockout Test Passed!")
+
+
+test_heavy_lockout()

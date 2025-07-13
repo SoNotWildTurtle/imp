@@ -8,6 +8,7 @@ except ImportError:
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 PROFILE_FILE = BASE_DIR / "config" / "imp-general-intelligences.json"
+LOCK_FILE = BASE_DIR / "logs" / "imp-lockout-log.json"
 USER_SECRET = "C3MAB55AJKUAF3LTLGJFO33NPKCDHYWL"
 
 
@@ -15,6 +16,8 @@ def test_gi_profile_creation():
     if pyotp is None:
         print("⚠️ pyotp not available. Skipping GI builder test.")
         return
+    if LOCK_FILE.exists():
+        LOCK_FILE.unlink()
     if PROFILE_FILE.exists():
         with open(PROFILE_FILE, "r") as f:
             before = len(json.load(f))
