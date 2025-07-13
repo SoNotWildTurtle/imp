@@ -25,3 +25,18 @@ file under `imp/config/gi/`. The creator logs each build to
 All GI build goals are tracked in `imp/logs/imp-gi-goals.json`. You can run
 `imp/core/imp_gi_goal_viewer.py` to print the current status of each goal.
 
+## 4. Ongoing Check-ins and Evolution
+Each intelligence can periodically report its status using `imp/interaction/imp-gi-communicator.py`:
+
+```
+python3 imp/interaction/imp-gi-communicator.py checkin <alias> "status message"
+```
+
+To request codebase updates or other evolution steps, run the communicator with `request-evolution`. You will be prompted for multi-factor verification before the request is logged:
+
+```
+python3 imp/interaction/imp-gi-communicator.py request-evolution <alias> "what to change"
+```
+
+The communication log is stored in `imp/logs/imp-gi-comm-log.json` for audit purposes.
+
