@@ -1,0 +1,195 @@
+# Cohesion Map
+# This file tracks each file in the repository with its line count and serves as
+# a progress map. Once a file has been read completely, record the range of
+# lines reviewed so we know which parts of IMP have been verified to work
+# together.
+# Checked lines: AGENTS.md 1-19; README.md 1-169; imp-start.ps1 1-34;
+# imp/bin/imp-backup.sh 1-20; imp/bin/imp-chat.sh 1-4; imp/bin/imp-enhance.sh
+# 1-7; imp/bin/imp-google-login.sh 1-3; imp/bin/imp-install.sh 1-11;
+# imp/bin/imp-login.sh 1-3; imp/bin/imp-mood.sh 1-26; imp/bin/imp-motivate.sh
+# 1-4; imp/bin/imp-restore.sh 1-26; imp/bin/imp-self-destruct.sh 1-29;
+# imp/bin/imp-speech.sh 1-3; imp/bin/imp-start.py 1-50; imp/bin/imp-start.sh
+# 1-13 (line 5 launches /root/imp/core/imp-execute.py); imp/bin/imp-status.sh 1-6; imp/bin/imp-stop.py 1-24; imp/bin/imp-stop.sh
+# 1-12; imp/bin/imp-update.sh 1-10; imp/bin/imp-voice.sh 1-3;
+# imp/config/imp-cluster-nodes.json 1-3; imp/config/imp-config-manager.py 1-62;
+# imp/config/imp-credentials.json 1-8; imp/config/imp-environment.json 1-8;
+# imp/config/imp-google-oauth.json 1-9; imp/config/imp-intranet.json 1-5;
+# imp/config/imp-personality.json 1-19; imp/config/imp-system-settings.json 1-18;
+# imp/config/imp-user-permissions.json 1-24;
+# imp/config/imp-user-registration.json 1-9; imp/core/imp-3d-neural-network.py
+# 1-313; imp/core/imp-adaptive-planner.py 1-45;
+# imp/core/imp-decision-forecaster.py 1-48; imp/core/imp-defense-engine.py 1-45; imp/core/imp-defense-nn.py 1-96; imp/core/imp-execute.py 1-46; imp/core/imp-goal-chat.py 1-180; imp/core/imp-goal-manager.py 1-126; imp/core/imp-learning-memory.py 1-40; imp/core/imp-message-bus.py 1-57; imp/core/imp-mood-manager.py 1-75; imp/core/imp-motivation.py 1-39; imp/core/imp-network-task-engine.py 1-48; imp/core/imp-network-task-nn.py 1-97; imp/core/imp-neural-network.py 1-109; imp/core/imp-speech-to-text.py 1-54; imp/core/imp-status-monitor.py 1-21; imp/core/imp-strategy-generator.py 1-42; imp/core/imp-task-executor.py 1-57; imp/core/imp-voice.py 1-77; imp/expansion/imp-cluster-manager.py 1-33; imp/expansion/imp-distributed-memory.py 1-49; imp/expansion/imp-distributed-queue.py 1-75; imp/expansion/imp-intranet.py 1-39; imp/expansion/imp-load-scheduler.py 1-57; imp/expansion/imp-node-communicator.py 1-89; imp/expansion/imp-node-monitor.py 1-31; imp/expansion/imp-resource-balancer.py 1-40; imp/expansion/imp-secure-node-manager.py 1-101;
+# Lines	File
+
+     7 .gitignore - checked
+    19 AGENTS.md - checked
+   169 README.md - checked
+    34 imp-start.ps1 - checked
+    20 imp/bin/imp-backup.sh - checked
+     4 imp/bin/imp-chat.sh - checked
+     7 imp/bin/imp-enhance.sh - checked
+     3 imp/bin/imp-google-login.sh - checked
+    11 imp/bin/imp-install.sh - checked
+     3 imp/bin/imp-login.sh - checked
+    26 imp/bin/imp-mood.sh - checked
+     4 imp/bin/imp-motivate.sh - checked
+    26 imp/bin/imp-restore.sh - checked
+    29 imp/bin/imp-self-destruct.sh - checked
+     3 imp/bin/imp-speech.sh - checked
+    50 imp/bin/imp-start.py - checked
+    13 imp/bin/imp-start.sh - checked
+     6 imp/bin/imp-status.sh - checked
+    24 imp/bin/imp-stop.py - checked
+    12 imp/bin/imp-stop.sh - checked
+    10 imp/bin/imp-update.sh - checked
+     3 imp/bin/imp-voice.sh - checked
+     3 imp/config/imp-cluster-nodes.json - checked
+    62 imp/config/imp-config-manager.py - checked
+     8 imp/config/imp-credentials.json - checked
+     8 imp/config/imp-environment.json - checked
+     9 imp/config/imp-google-oauth.json - checked
+     5 imp/config/imp-intranet.json - checked
+    19 imp/config/imp-personality.json - checked
+    18 imp/config/imp-system-settings.json - checked
+    24 imp/config/imp-user-permissions.json - checked
+     9 imp/config/imp-user-registration.json - checked
+   313 imp/core/imp-3d-neural-network.py - checked
+    45 imp/core/imp-adaptive-planner.py - checked
+    48 imp/core/imp-decision-forecaster.py - checked
+    45 imp/core/imp-defense-engine.py - checked
+    96 imp/core/imp-defense-nn.py - checked
+    46 imp/core/imp-execute.py - checked
+   180 imp/core/imp-goal-chat.py - checked
+   126 imp/core/imp-goal-manager.py - checked
+    40 imp/core/imp-learning-memory.py - checked
+    57 imp/core/imp-message-bus.py - checked
+    75 imp/core/imp-mood-manager.py - checked
+    39 imp/core/imp-motivation.py - checked
+    48 imp/core/imp-network-task-engine.py - checked
+    97 imp/core/imp-network-task-nn.py - checked
+   109 imp/core/imp-neural-network.py - checked
+    54 imp/core/imp-speech-to-text.py - checked
+    21 imp/core/imp-status-monitor.py - checked
+    42 imp/core/imp-strategy-generator.py - checked
+    57 imp/core/imp-task-executor.py - checked
+    77 imp/core/imp-voice.py - checked
+    33 imp/expansion/imp-cluster-manager.py - checked
+    49 imp/expansion/imp-distributed-memory.py - checked
+    75 imp/expansion/imp-distributed-queue.py - checked
+    39 imp/expansion/imp-intranet.py - checked
+    57 imp/expansion/imp-load-scheduler.py - checked
+    89 imp/expansion/imp-node-communicator.py - checked
+    31 imp/expansion/imp-node-monitor.py - checked
+    40 imp/expansion/imp-resource-balancer.py - checked
+   101 imp/expansion/imp-secure-node-manager.py - checked
+    14 imp/logs/imp-activity-log.json - checked
+    41 imp/logs/imp-auth-log.json - checked
+   326 imp/logs/imp-blockchain-ledger.json - checked
+     0 imp/logs/imp-bug-report.json - checked
+    14 imp/logs/imp-decision-log.json - checked
+     5 imp/logs/imp-distributed-memory.json - checked
+     6 imp/logs/imp-distributed-queue.json - checked
+    25 imp/logs/imp-goals.json - checked
+     4 imp/logs/imp-integrity-log.json - checked
+     3 imp/logs/imp-learning-memory.json - checked
+    53 imp/logs/imp-log-manager.py - checked
+    37 imp/logs/imp-message-queue.json - checked
+    63 imp/logs/imp-model-analysis.json - checked
+     0 imp/logs/imp-mood.json - checked
+     0 imp/logs/imp-network-audit.json - checked
+     1 imp/logs/imp-network-baseline.json - checked
+     1 imp/logs/imp-network-diff.json - checked
+     1 imp/logs/imp-node-health.json - checked
+     6 imp/logs/imp-performance.json - checked
+    14 imp/logs/imp-security-log.json - checked
+    21 imp/logs/imp-self-heal-log.json - checked
+     0 imp/logs/imp-speech-log.txt - checked
+     9 imp/logs/imp-strategy-plans.json - checked
+    14 imp/logs/imp-update-log.json - checked
+     4 imp/logs/imp-voice-log.txt - checked
+     1 imp/models/README.md - checked
+     4 imp/notes/README.md - checked
+     3 imp/notes/alex-comment.txt - checked
+     9 imp/notes/blockchain-self-healing.txt - checked
+     1 imp/notes/example.txt - checked
+    24 imp/notes/imp-poison-defense.txt - checked
+   115 imp/notes/imp-research-roadmap.txt - checked
+    16 imp/notes/intranet-scapy-guide.txt - checked
+   141 imp/notes/next-gen-imp-strategy.txt - checked
+   157 imp/notes/project-structure.txt - checked
+    18 imp/notes/self-evolution-analysis.txt - checked
+    13 imp/notes/self-evolution-dev-notes.txt - checked
+    33 imp/notes/self-evolution-plan.txt - checked
+    10 imp/requirements.txt - checked
+   122 imp/security/imp-authenticator.py - checked
+    38 imp/security/imp-automated-defense.py - checked
+    30 imp/security/imp-firewall-manager.py - checked
+    62 imp/security/imp-hardware-guard.py - checked
+    37 imp/security/imp-integrity-checker.py - checked
+    31 imp/security/imp-log-analyzer.py - checked
+    53 imp/security/imp-network-auditor.py - checked
+    68 imp/security/imp-network-monitor.py - checked
+    39 imp/security/imp-poison-detector.py - checked
+    51 imp/security/imp-security-optimizer.py - checked
+    30 imp/security/imp-threat-monitor.py - checked
+    35 imp/security/imp-vulnerability-scanner.py - checked
+    71 imp/self-improvement/imp-3d-network-tester.py - checked
+    12 imp/self-improvement/imp-auto-heal.py - checked
+    65 imp/self-improvement/imp-blockchain-ledger.py - checked
+    23 imp/self-improvement/imp-bug-hunter.py - checked
+    48 imp/self-improvement/imp-code-predictor.py - checked
+   151 imp/self-improvement/imp-code-updater.py - checked
+    46 imp/self-improvement/imp-defense-trainer.py - checked
+    72 imp/self-improvement/imp-metacognitive-analysis.py - checked
+   138 imp/self-improvement/imp-model-analyzer.py - checked
+    50 imp/self-improvement/imp-network-task-trainer.py - checked
+    46 imp/self-improvement/imp-rewrite-approval.py - checked
+   108 imp/self-improvement/imp-self-healer.py - checked
+    40 imp/self-improvement/imp-self-tuner.py - checked
+    40 imp/self-improvement/imp-version-tracker.py - checked
+    48 imp/self-improvement/imp_mode_advisor.py - checked
+    52 imp/tests/run-all-tests.sh - checked
+    93 imp/tests/test-3d-network.py - checked
+    22 imp/tests/test-adaptive-planner.py - checked
+    17 imp/tests/test-auth.py - checked
+    13 imp/tests/test-auto-heal.py - checked
+    15 imp/tests/test-automated-defense.py - checked
+    20 imp/tests/test-blockchain-ledger.py - checked
+    19 imp/tests/test-bug-hunter.py - checked
+    18 imp/tests/test-config.py - checked
+    30 imp/tests/test-core-functions.py - checked
+    19 imp/tests/test-defense-engine.py - checked
+    26 imp/tests/test-defense-nn.py - checked
+    19 imp/tests/test-defense-trainer.py - checked
+    22 imp/tests/test-distributed-memory.py - checked
+    24 imp/tests/test-distributed-queue.py - checked
+    17 imp/tests/test-expansion.py - checked
+    15 imp/tests/test-goal-chat.py - checked
+    15 imp/tests/test-hardware-guard.py - checked
+    15 imp/tests/test-install.py - checked
+    23 imp/tests/test-intranet.py - checked
+    21 imp/tests/test-logs.py - checked
+    19 imp/tests/test-message-bus.py - checked
+    23 imp/tests/test-metacognition.py - checked
+    22 imp/tests/test-mode-advisor.py - checked
+    52 imp/tests/test-model-analysis.py - checked
+    11 imp/tests/test-mood-cli.py - checked
+    30 imp/tests/test-mood.py - checked
+    21 imp/tests/test-motivation.py - checked
+    15 imp/tests/test-network-auditor.py - checked
+    16 imp/tests/test-network-monitor.py - checked
+    18 imp/tests/test-network-task-engine.py - checked
+    25 imp/tests/test-network-task-nn.py - checked
+    19 imp/tests/test-network-task-trainer.py - checked
+    46 imp/tests/test-neural-network.py - checked
+    14 imp/tests/test-node-communicator.py - checked
+    28 imp/tests/test-optimal-path.py - checked
+    22 imp/tests/test-performance.py - checked
+    16 imp/tests/test-secure-node-manager.py - checked
+    43 imp/tests/test-security.py - checked
+    30 imp/tests/test-self-healer.py - checked
+    17 imp/tests/test-self-improvement.py - checked
+     9 imp/tests/test-speech.py - checked
+     9 imp/tests/test-voice.py - checked
+    25 imp/tests/test-windows-support.py - checked
+  6583 total

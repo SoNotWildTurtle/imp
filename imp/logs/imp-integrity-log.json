@@ -1,10 +1,5 @@
-[
-    {
-        "timestamp": "2025-03-19 20:00:00",
-        "file": "/etc/ssh/sshd_config",
-        "modification_detected": "Yes",
-        "previous_hash": "a9c8d7b6e5f41234567890123456789a",
-        "current_hash": "f1e2d3c4b5a67890123456789abcdef0",
-        "action_taken": "Alert sent to administrator"
-    }
-]
+{
+    "/etc/passwd": "3ddffc9d0dd21e45662b379399bb6433c56b1cc8a89517901ad5a2d374e668b5",
+    "/etc/shadow": "673b5978de8ee6c17f89cf82bbf42d158647502c90ca8078894dcf4629a860b3",
+    "/etc/sudoers": "5bac27ce5ff1a78ace8f3ef81bfd60cbd44810ac3f3d280da9d7649fe90c18f8"
+}

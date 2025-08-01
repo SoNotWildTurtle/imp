@@ -1,10 +1,11 @@
 import os
 import json
-import time
+from pathlib import Path
 from transformers import pipeline
 
-PERFORMANCE_LOG = "/root/imp/logs/imp-performance.json"
-PREDICTIONS_FILE = "/root/imp/logs/imp-code-predictions.json"
+ROOT = Path(__file__).resolve().parents[1]
+PERFORMANCE_LOG = ROOT / "logs" / "imp-performance.json"
+PREDICTIONS_FILE = ROOT / "logs" / "imp-code-predictions.json"
 
 generator = pipeline("text-generation", model="gpt2")
 
@@ -43,6 +44,5 @@ def predict_future_improvements():
 
     print("[+] IMP has predicted future improvements.")
 
-while True:
+if __name__ == "__main__":
     predict_future_improvements()
-    time.sleep(86400)  # Runs once a day

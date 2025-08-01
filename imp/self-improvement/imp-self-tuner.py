@@ -1,9 +1,11 @@
 import os
 import json
 import time
+from pathlib import Path
 
-PERFORMANCE_LOG = "/root/imp/logs/imp-performance.json"
-TUNING_LOG = "/root/imp/logs/imp-tuning-log.json"
+ROOT = Path(__file__).resolve().parents[1]
+PERFORMANCE_LOG = ROOT / "logs" / "imp-performance.json"
+TUNING_LOG = ROOT / "logs" / "imp-tuning-log.json"
 
 def get_performance_data():
     if not os.path.exists(PERFORMANCE_LOG):
@@ -34,6 +36,5 @@ def refine_algorithms():
 
         print("[+] IMP has fine-tuned its performance.")
 
-while True:
+if __name__ == "__main__":
     refine_algorithms()
-    time.sleep(14400)  # Runs every 4 hours
