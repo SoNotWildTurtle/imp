@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+imp/logs/imp-chat-log.txt
+imp/logs/imp-metacognitive.json
+imp/logs/imp-poison-log.json
+imp/models/*.gguf
+

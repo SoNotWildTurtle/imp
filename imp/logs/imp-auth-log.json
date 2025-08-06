@@ -1,0 +1,30 @@
+[
+    {
+        "user": "alex",
+        "success": true
+    },
+    {
+        "user": "alex",
+        "success": true
+    },
+    {
+        "user": "google",
+        "success": false
+    },
+    {
+        "user": "google_auto",
+        "success": false
+    },
+    {
+        "user": "alex",
+        "success": true
+    },
+    {
+        "user": "google",
+        "success": false
+    },
+    {
+        "user": "google_auto",
+        "success": false
+    }
+]

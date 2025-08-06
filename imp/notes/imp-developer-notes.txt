@@ -1,0 +1,19 @@
+IMP Developer Notes
+===================
+
+These notes summarize the direction behind major coding choices and how each
+component is intended to be used.
+
+- **Modular design** keeps the project portable. Most modules live under
+  `core` or `expansion` and communicate via simple function calls.
+- **Additive updates** preserve history so IMP can roll back or study old
+  behavior when evolving.
+- **Collaboratory network** (`imp-collaboratory-nn.py` and
+  `imp-collaboratory-engine.py`) explores collaborative task planning. The
+  engine loads the network and evaluates inputs to suggest coordination paths.
+- **Self-improvement modules** in `self-improvement` allow IMP to analyse its
+  own code and evolve over time.
+- **Security modules** defend the system while keeping logs for review.
+
+Developers are encouraged to reference these notes when extending IMP so new
+features follow the same philosophy and maintain compatibility.
