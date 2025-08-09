@@ -1,9 +1,11 @@
 import os
 import json
 import time
+from pathlib import Path
 
-APPROVAL_FILE = "/root/imp/logs/imp-major-rewrite-requests.json"
-APPROVED_CHANGES_FILE = "/root/imp/logs/imp-approved-rewrites.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+APPROVAL_FILE = BASE_DIR / "logs" / "imp-major-rewrite-requests.json"
+APPROVED_CHANGES_FILE = BASE_DIR / "logs" / "imp-approved-rewrites.json"
 
 def check_pending_rewrites():
     if not os.path.exists(APPROVAL_FILE):
@@ -29,7 +31,8 @@ def request_approval():
         chosen_request = pending_rewrites[int(choice) - 1]
         
         # Apply major rewrite
-        os.system(f"python3 /root/imp/self-improvement/imp-code-updater.py {chosen_request['file']}")
+        updater = BASE_DIR / "self-improvement" / "imp-code-updater.py"
+        os.system(f"python3 {updater} {chosen_request['file']}")
 
         print(f"[+] ✅ Approved major rewrite for {chosen_request['file']}. IMP will now apply changes.")
 
@@ -41,6 +44,5 @@ def request_approval():
         with open(APPROVAL_FILE, "w") as f:
             json.dump([r for r in pending_rewrites if r["file"] != chosen_request["file"]], f, indent=4)
 
-while True:
+if __name__ == "__main__":
     request_approval()
-    time.sleep(3600)  # Runs every hour

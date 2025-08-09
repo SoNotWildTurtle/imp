@@ -1,9 +1,11 @@
 import os
 import json
 import time
+from pathlib import Path
 
-LEARNING_FILE = "/root/imp/logs/imp-learning-memory.json"
-DECISIONS_FILE = "/root/imp/logs/imp-decision-log.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+LEARNING_FILE = BASE_DIR / "logs" / "imp-learning-memory.json"
+DECISIONS_FILE = BASE_DIR / "logs" / "imp-decision-log.json"
 
 def get_past_decisions():
     if not os.path.exists(DECISIONS_FILE):
@@ -35,6 +37,5 @@ def store_learnings():
 
     print("[+] IMP has updated its knowledge base.")
 
-while True:
+if __name__ == "__main__":
     store_learnings()
-    time.sleep(7200)  # Runs every 2 hours

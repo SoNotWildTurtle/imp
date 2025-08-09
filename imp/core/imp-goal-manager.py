@@ -1,38 +1,17 @@
-import os
-import json
-import time
-from transformers import pipeline
+"""Interactive wrapper for goal management."""
 
-GOALS_FILE = "/root/imp/logs/imp-goals.json"
+from imp.managers import goal_manager
 
-generator = pipeline("text-generation", model="gpt2")
 
 def get_existing_goals():
-    if not os.path.exists(GOALS_FILE):
-        return []
-    with open(GOALS_FILE, "r") as f:
-        return json.load(f)
+    return goal_manager.read_goals()
+
 
 def add_new_goal(user_input):
-    existing_goals = get_existing_goals()
-
-    prompt = f"""
-    User has provided the following input:
-    "{user_input}"
-
-    Convert this into a structured, actionable AI goal.
-    """
-
-    response = generator(prompt, max_length=500, num_return_sequences=1)
-    new_goal = response[0]['generated_text']
-
-    existing_goals.append({"goal": new_goal, "status": "pending"})
-
-    with open(GOALS_FILE, "w") as f:
-        json.dump(existing_goals, f, indent=4)
-
+    new_goal = goal_manager.add_goal(user_input)
     print(f"[+] New goal added: {new_goal}")
 
-while True:
+
+if __name__ == "__main__":
     user_input = input("You: ")
     add_new_goal(user_input)

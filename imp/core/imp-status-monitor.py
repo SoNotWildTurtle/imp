@@ -1,8 +1,10 @@
 import os
 import json
 import time
+from pathlib import Path
 
-STATUS_FILE = "/root/imp/logs/imp-status.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+STATUS_FILE = BASE_DIR / "logs" / "imp-status.json"
 
 def log_status():
     system_status = {
@@ -16,6 +18,5 @@ def log_status():
 
     print("[+] System status logged.")
 
-while True:
+if __name__ == "__main__":
     log_status()
-    time.sleep(600)

@@ -1,11 +1,13 @@
 import os
 import json
 import time
+from pathlib import Path
 from transformers import pipeline
 
-CODEBASE_PATH = "/root/imp/"
-UPDATE_LOG = "/root/imp/logs/imp-update-log.txt"
-APPROVAL_FILE = "/root/imp/logs/imp-major-rewrite-requests.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+CODEBASE_PATH = BASE_DIR
+UPDATE_LOG = BASE_DIR / "logs" / "imp-update-log.txt"
+APPROVAL_FILE = BASE_DIR / "logs" / "imp-major-rewrite-requests.json"
 
 generator = pipeline("text-generation", model="gpt2")
 
@@ -53,6 +55,5 @@ def analyze_and_update_code():
 
             print(f"✅ Updated {file} with minor optimizations.")
 
-while True:
+if __name__ == "__main__":
     analyze_and_update_code()
-    time.sleep(86400)  # Runs daily

@@ -1,10 +1,12 @@
 import os
 import json
 import time
+from pathlib import Path
 from transformers import pipeline
 
-DECISION_LOG = "/root/imp/logs/imp-decision-log.json"
-STRATEGY_FILE = "/root/imp/logs/imp-strategy-plans.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+DECISION_LOG = BASE_DIR / "logs" / "imp-decision-log.json"
+STRATEGY_FILE = BASE_DIR / "logs" / "imp-strategy-plans.json"
 
 generator = pipeline("text-generation", model="gpt2")
 
@@ -40,6 +42,5 @@ def predict_outcomes():
 
     print("[+] IMP has predicted possible outcomes.")
 
-while True:
+if __name__ == "__main__":
     predict_outcomes()
-    time.sleep(21600)  # Runs every 6 hours

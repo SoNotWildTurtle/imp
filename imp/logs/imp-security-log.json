@@ -10,5 +10,9 @@
         "threat": "Suspicious process detected",
         "process": "nmap",
         "action_taken": "Terminated process & logged user"
+    },
+    {
+        "timestamp": "2025-07-06 11:07:02",
+        "event": "Defense cycle executed"
     }
 ]
