@@ -1,0 +1,39 @@
+[
+    {
+        "timestamp": "2025-07-11 17:26:17",
+        "model_a": "/workspace/imp/imp/tmp_model1.json",
+        "model_b": "/workspace/imp/imp/tmp_model2.json",
+        "diff": {
+            "input_size_diff": 0,
+            "hidden_size_diff": 1,
+            "output_size_diff": 0,
+            "w1_diff": 0.8472877354636781,
+            "w2_diff": 1.007193333172248
+        }
+    },
+    {
+        "timestamp": "2025-07-12 18:54:35",
+        "model_a": "/workspace/imp/imp/tmp_model1.json",
+        "model_b": "/workspace/imp/imp/tmp_model2.json",
+        "diff": {
+            "input_size_diff": 0,
+            "hidden_size_diff": 1,
+            "output_size_diff": 0,
+            "w1_diff": 0.981594945867609,
+            "w2_diff": 1.5435414045388915
+        }
+    },
+    {
+        "timestamp": "2025-07-12 18:54:35",
+        "model_a": "/workspace/imp/imp/net_a.json",
+        "model_b": "/workspace/imp/imp/net_b.json",
+        "diff": {
+            "neuron_count_diff": 1,
+            "connection_count_diff": 0,
+            "avg_position_diff": 0.0,
+            "new_types": [
+                "novel_0"
+            ]
+        }
+    }
+]

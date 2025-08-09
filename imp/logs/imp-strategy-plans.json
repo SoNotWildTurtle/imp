@@ -1,0 +1,10 @@
+[
+    {
+        "goal": "Improve security",
+        "weight": 0.65
+    },
+    {
+        "goal": "optimize performance",
+        "weight": 0.65
+    }
+]

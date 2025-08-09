@@ -1,10 +1,16 @@
 import os
 import json
-import time
 import subprocess
+from pathlib import Path
+import importlib.util
 
-TASKS_FILE = "/root/imp/logs/imp-scheduled-tasks.json"
-CLUSTER_NODES_FILE = "/root/imp/config/imp-cluster-nodes.json"
+ROOT = Path(__file__).resolve().parents[1]
+TASKS_FILE = ROOT / "logs" / "imp-scheduled-tasks.json"
+CLUSTER_NODES_FILE = ROOT / "config" / "imp-cluster-nodes.json"
+DQ_PATH = ROOT / "expansion" / "imp-distributed-queue.py"
+spec = importlib.util.spec_from_file_location('dq', DQ_PATH)
+dq = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(dq)
 
 def get_available_nodes():
     nodes = []
@@ -21,29 +27,31 @@ def get_available_nodes():
     return available_nodes
 
 def schedule_tasks():
+    remote_dir = os.environ.get("IMP_REMOTE_DIR", str(ROOT))
     tasks = [
-        "python3 /root/imp/self-improvement/imp-code-updater.py",
-        "python3 /root/imp/security/imp-security-optimizer.py",
-        "python3 /root/imp/expansion/imp-resource-balancer.py"
+        f"python3 {remote_dir}/self-improvement/imp-code-updater.py",
+        f"python3 {remote_dir}/security/imp-security-optimizer.py",
+        f"python3 {remote_dir}/expansion/imp-resource-balancer.py",
     ]
 
     nodes = get_available_nodes()
 
     if not nodes:
-        print("⚠️ No available nodes to distribute tasks.")
+        print("No available nodes to distribute tasks.")
         return
 
     assigned_tasks = {}
-    for i, task in enumerate(tasks):
-        node = nodes[i % len(nodes)]
-        subprocess.run(f"ssh {node} '{task}'", shell=True)
-        assigned_tasks[task] = node
+    for task in tasks:
+        dq.add_task(task)
+    assigned_tasks = dq.assign_tasks(nodes)
+    for node, cmds in assigned_tasks.items():
+        for cmd in cmds:
+            subprocess.run(f"ssh {node} '{cmd}'", shell=True)
 
     with open(TASKS_FILE, "w") as f:
         json.dump(assigned_tasks, f, indent=4)
 
     print("[+] Tasks scheduled across AI nodes.")
 
-while True:
+if __name__ == "__main__":
     schedule_tasks()
-    time.sleep(7200)  # Runs every 2 hours
