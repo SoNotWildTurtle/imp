@@ -1,0 +1,40 @@
+Startup Verification Log
+=========================
+
+This log records the status of each step in IMP's launch sequence using `imp/bin/imp-start.sh`.
+
+1. Resolve project directories
+   - Script computes `ROOT` and defines absolute path for the executor.
+   - Status: OK
+
+2. Launch core executor (`/root/imp/core/imp-execute.py`)
+   - Verified: file exists and command issued via `nohup`.
+   - Status: OK
+
+3. Launch learning memory (`core/imp-learning-memory.py`)
+   - After fix, module runs without `KeyError` when decision entries lack fields.
+   - Status: OK
+
+4. Launch strategy generator (`core/imp-strategy-generator.py`)
+   - Command executed; no errors reported.
+   - Status: OK
+
+5. Launch code updater (`self-improvement/imp-code-updater.py`)
+   - Started; no immediate errors in `nohup.out`.
+   - Status: OK
+
+6. Launch security optimizer (`security/imp-security-optimizer.py`)
+   - Performs system audits; warnings appear if systemd or AppArmor unavailable.
+   - Status: OK (with warnings)
+
+7. Launch cluster manager (`expansion/imp-cluster-manager.py`)
+   - Attempts to distribute workload; gracefully reports `Failed to copy to localhost: ssh: connect to host localhost port 22: Connection refused` when SSH is unavailable.
+   - Status: Warning – no remote nodes configured or SSH not accessible.
+
+8. Verify start script executor path
+   - Confirmed line 5 launches `/root/imp/core/imp-execute.py` after recent update.
+   - Status: OK
+
+Overall result: IMP startup completes; non‑critical warnings noted above.
+
+For module locations, see `notes/project-structure.txt`.

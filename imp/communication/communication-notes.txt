@@ -1,0 +1,234 @@
+# Communication Notes
+
+These notes outline a transformer-based channel for exchanging aliased
+commands between IMP and third-party applications.  The design borrows
+concepts from network synchronization, neural routing, and secure API
+gateways.  The initial goal is to permit new tools to converse with IMP
+without exposing raw shell commands or unsanitized text.  Future
+revisions can extend the channel to a full multi-agent message bus.
+
+## 1. Rationale
+
+1. Commands expressed as human-readable aliases are easier to audit than
+   raw strings.  An alias like `LIST|path=/tmp` conveys intent without
+   letting arbitrary input leak into the shell.
+2. The transformer allows IMP to learn mappings between aliases and
+   internal calls.  As new tasks appear, the alias dictionary can grow
+   adaptively without rewriting the core interface.
+3. A handshake protocol shaped like a diamond provides mutual assurance
+   that both sides agree on the payload and its destination before any
+   action is taken.
+4. Sanitization ensures that parameters embedded in aliases cannot break
+   the command structure.  Forbidden characters are stripped or cause the
+   message to be rejected.
+
+## 2. Diamond Handshake Concept
+
+The handshake has four edges forming a diamond.  Imagine the points
+labeled: top, left, right, bottom.  IMP sits at the right point while the
+third-party app sits at the left.  Communication proceeds as follows:
+
+1. **IMP to Top** – IMP sends a "ready" signal upward.  This announces the
+   intent to transmit a command and hangs the I/O gate.
+2. **Top to App** – The top node forwards the intent to the external
+   application.  Until this step completes, no command body is released.
+3. **App to Bottom** – The application acknowledges by drawing a line from
+   its endpoint up to the bottom midpoint, locking the gate.
+4. **Bottom to IMP** – The bottom midpoint returns a final confirmation to
+   IMP, lowering the wall.  Only after this confirmation does the command
+   fully transfer.
+
+Different outcomes simply vary the final line:
+
+- If the app refuses the command, the bottom line carries a `refused`
+  tag.
+- If an error occurs, the bottom line carries an `error` tag.
+- For successful execution, the bottom line is plain and the app returns
+  any response data.
+
+## 3. Aliased Command Format
+
+The canonical alias format is a pipe-delimited string:
+
+```
+ALIAS|key=value|key2=value2
+```
+
+- `ALIAS` is a token such as `LIST` or `READ`.
+- Each `key=value` pair represents a parameter.  The transformer strips
+  or rejects characters like `|` and `=` within keys or values to keep
+  the structure intact.
+- Parameters are order-independent.
+
+### 3.1 Alias Dictionary
+
+Aliases map to internal functions.  For example:
+
+| Alias | Internal command | Description                      |
+|-------|------------------|----------------------------------|
+| LIST  | `ls`             | List files or directories        |
+| READ  | `cat`            | Read file contents               |
+| WRITE | `echo`           | Echo text to output or a file    |
+
+The dictionary lives in `CommandTransformer.alias_map`.  Developers
+extending the system can supply a custom map during initialization.
+
+### 3.2 Parameter Rules
+
+1. Parameters must be alphanumeric plus underscores.
+2. Values may include dashes and slashes for paths but no pipes or equal
+   signs.
+3. Empty parameters are removed before transmission.
+
+## 4. Sanitization Strategies
+
+The transformer rejects any alias not listed in the dictionary.  During
+parsing, it splits the message by `|` and then examines each token:
+
+- Tokens lacking an `=` are ignored.
+- Keys and values are stripped of forbidden characters.
+- If sanitization changes a token, a warning can be logged for forensic
+  review.
+- Developers can supply an allow-list of parameter names for stricter
+  control.
+
+Incoming commands that fail these checks raise `ValueError` and the
+handshake returns an error path to signal refusal.
+
+## 5. Handshake States
+
+Four basic handshake states correspond to the diamond edges:
+
+1. `imp->top`
+2. `top->app`
+3. `app->bottom`
+4. `bottom->imp`
+
+When the handshake succeeds, all four lines complete in order.  If a
+refusal or error occurs, the final line contains a note such as
+`bottom->imp (refused)` so the sender can respond appropriately.  These
+states are returned as a list and can be logged for audit purposes.
+
+## 6. Transformer Integration
+
+While the initial version uses a static alias dictionary, the long-term
+vision leverages a small transformer model that learns context from prior
+exchanges.  The model could:
+
+- Suggest new aliases when repetitive phrases appear.
+- Rank potential internal commands when multiple aliases partially match
+  a request.
+- Detect suspicious patterns that deviate from previous communications
+  and trigger additional verification.
+
+### 6.1 Training Data
+
+Collect pairs of `{alias, internal_command, parameters}` from real
+interactions.  The model predicts the internal command and parameters for
+new aliases and also predicts a confidence score used for the
+spatiotemporal reasoning engine.
+
+### 6.2 Offline Operation
+
+The transformer can run offline by loading a local GGUF model.  During
+testing or on low-resource systems, the module falls back to the static
+alias map.
+
+## 7. Developer Implementation Guide
+
+To integrate a third-party application with IMP's communication channel,
+follow these steps:
+
+1. **Install the Module** – Place `imp/communication/imp-command-transformer.py`
+   in your project and ensure it is importable.
+2. **Define Aliases** – Create an alias map translating your application's
+   capabilities into standardized tokens.
+3. **Implement Handshake** – Use the provided `handshake` method or extend
+   it with the nonce and HMAC digest.  Both sides should refuse commands
+   unless all four lines complete and the digest matches.
+4. **Sanitize Input** – When receiving an alias string, call
+   `transformer.parse()` and act only if no exception is raised.
+5. **Send Commands** – Use `transformer.build()` to create outgoing alias
+   strings and dispatch them through your networking layer.
+6. **Log Events** – Record handshake paths, sanitized parameters, and
+   command results for later auditing.
+
+### 7.1 Example
+
+```
+from imp.communication.imp-command-transformer import CommandTransformer
+
+transformer = CommandTransformer()
+message = transformer.build("ls", {"path": "/tmp"})
+info = transformer.handshake("ack")
+# Send message and handshake info (path, nonce, digest) to the partner application
+```
+
+On the receiving side:
+
+```
+command, params = transformer.parse(message)
+verified = transformer.handshake("ack", info["nonce"], info["digest"])
+if command == "ls" and verified["digest"]:
+    result = os.listdir(params.get("path", "."))
+```
+
+### 7.2 Extending the Alias Set
+
+Developers can push new aliases by contributing pull requests to IMP or
+by negotiating a private dictionary.  Both ends must agree on the same
+mapping for the handshake to succeed.
+
+## 8. Error Signaling
+
+The diamond lines double as a signaling scheme:
+
+- `bottom->imp (refused)` – The external app declines the command.
+- `bottom->imp (error)` – An exception occurred during execution.
+- `bottom->imp (unknown)` – The app returned an unrecognized response.
+
+IMP can convert these markers into structured status codes, allowing the
+requester to decide whether to retry, abort, or escalate to a human.
+
+## 9. Security Considerations
+
+1. **Isolation** – All alias parsing occurs before any subprocess call.
+   Shell execution uses sanitized parameters only.
+2. **Logging** – Every handshake path and alias string can be logged for
+   anomaly detection.
+3. **Nonce + HMAC** – Each handshake now carries a random nonce and HMAC
+   digest computed with a shared secret to prevent tampering or replay.
+4. **Rate Limiting** – Repeated refusals from a partner may trigger a
+   temporary block to prevent brute-force attacks.
+
+## 10. Roadmap
+
+- Integrate the transformer with IMP's spatiotemporal mode advisor so the
+  system can choose when to rely on aliases versus direct API calls.
+- Develop a DSL for aliases to describe complex workflows.
+- Support streaming responses where the bottom line carries partial data
+  chunks.
+- Provide a certification suite so external developers can test their
+  implementations for compliance.
+
+## 11. Recommendations
+
+1. Begin with the static dictionary and handshake protocol while the
+   transformer model is being trained.
+2. Encourage third-party developers to version their alias dictionaries.
+3. Expose a self-test command that validates the diamond handshake end to
+   end before enabling production traffic.
+4. Consider sandboxing each parsed command in a lightweight VM or
+   container to mitigate any remaining risk.
+5. Document every addition to the alias map in `project-structure.txt` and
+   update tests accordingly.
+
+## 12. Summary
+
+The transformer-based alias channel offers a flexible yet secure bridge
+between IMP and external tools.  By combining deterministic sanitization
+with a learnable alias map and a formal handshake, we can permit rich
+communication without surrendering control of the host environment.  The
+notes above sketch a blueprint; subsequent commits will flesh out the
+API, add real transformer inference, and tie the module into IMP's
+self-evolution loop.

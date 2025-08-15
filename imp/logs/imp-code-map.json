@@ -1,0 +1,903 @@
+{
+  "imp/self-improvement/imp-bug-hunter.py": {
+    "functions": [
+      "scan_repository"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-auto-heal.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/self-improvement/imp-code-updater.py": {
+    "functions": [
+      "_load",
+      "decide_mode",
+      "get_generator",
+      "list_existing_code",
+      "write_patch",
+      "analyze_and_update_code",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-network-task-trainer.py": {
+    "functions": [
+      "load_model",
+      "load_samples",
+      "improve_network"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-defense-trainer.py": {
+    "functions": [
+      "load_model",
+      "load_samples",
+      "improve_defense"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp_mode_advisor.py": {
+    "functions": [
+      "_load_last_diff",
+      "spatiotemporal_confidence",
+      "choose_generation_mode",
+      "evaluate_request_quality"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-version-tracker.py": {
+    "functions": [
+      "list_existing_code",
+      "test_code_integrity",
+      "track_versions"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-model-analyzer.py": {
+    "functions": [
+      "_mean_abs_diff",
+      "compare_models",
+      "compare_model_files",
+      "_mean_positional_diff",
+      "compare_3d_networks",
+      "compare_3d_network_files",
+      "temporal_analysis"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-code-predictor.py": {
+    "functions": [
+      "_build_offline_generator",
+      "get_performance_metrics",
+      "predict_future_improvements"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-self-healer.py": {
+    "functions": [
+      "recover_with_chatgpt",
+      "run_linter",
+      "verify_and_heal",
+      "auto_verify_and_heal"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-debug-sandbox.py": {
+    "functions": [
+      "run_sandbox"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-metacognitive-analysis.py": {
+    "functions": [
+      "load_json",
+      "perform_metacognitive_analysis",
+      "update_neural_network",
+      "self_evolve_neural_network",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-code-map.py": {
+    "functions": [
+      "generate_code_map"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-3d-network-tester.py": {
+    "functions": [
+      "load_or_create_network",
+      "create_candidate",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-rewrite-approval.py": {
+    "functions": [
+      "check_pending_rewrites",
+      "request_approval"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-self-tuner.py": {
+    "functions": [
+      "get_performance_data",
+      "refine_algorithms"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-adversarial-trainer.py": {
+    "functions": [
+      "load_main",
+      "load_adv",
+      "run_adversarial_training"
+    ],
+    "classes": []
+  },
+  "imp/self-improvement/imp-blockchain-ledger.py": {
+    "functions": [
+      "snapshot_code",
+      "load_ledger",
+      "save_ledger",
+      "add_block",
+      "verify_chain"
+    ],
+    "classes": []
+  },
+  "imp/logs/imp-log-manager.py": {
+    "functions": [
+      "ensure_logs",
+      "review_logs",
+      "clean_logs"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-network-auditor.py": {
+    "functions": [
+      "load_allowed_nodes",
+      "scan_connections"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-log-analyzer.py": {
+    "functions": [
+      "analyze_logs"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-firewall-manager.py": {
+    "functions": [
+      "enforce_firewall"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-poison-detector.py": {
+    "functions": [
+      "compute_checksum",
+      "detect_poisoning"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-security-optimizer.py": {
+    "functions": [
+      "audit_open_ports",
+      "audit_packages",
+      "run_security_checks"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-integrity-checker.py": {
+    "functions": [
+      "calculate_file_hash",
+      "check_integrity"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-hardware-guard.py": {
+    "functions": [
+      "is_being_traced",
+      "check_debug_processes",
+      "log_event",
+      "run_hardware_guard"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-threat-monitor.py": {
+    "functions": [
+      "detect_intrusions"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-automated-defense.py": {
+    "functions": [
+      "gather_system_info",
+      "harden_services",
+      "run_all_checks",
+      "automated_defense_cycle"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-authenticator.py": {
+    "functions": [
+      "load_creds",
+      "authenticate",
+      "record_attempt",
+      "authenticate_google",
+      "authenticate_google_auto",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-network-monitor.py": {
+    "functions": [
+      "load_baseline",
+      "save_baseline",
+      "record_diff",
+      "monitor_connections"
+    ],
+    "classes": []
+  },
+  "imp/security/imp-vulnerability-scanner.py": {
+    "functions": [
+      "scan_for_exposed_keys",
+      "scan_for_weak_permissions",
+      "run_vulnerability_scan"
+    ],
+    "classes": []
+  },
+  "imp/bin/imp-start.py": {
+    "functions": [
+      "_load",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/bin/imp-stop.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/config/imp-config-manager.py": {
+    "functions": [
+      "load_config",
+      "modify_config",
+      "get_user_role"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-expansion.py": {
+    "functions": [
+      "test_node_health"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-adversarial-trainer.py": {
+    "functions": [
+      "test_adversarial_trainer"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-motivation.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-distributed-memory.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-automated-defense.py": {
+    "functions": [
+      "test_automated_defense"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-optimal-path.py": {
+    "functions": [
+      "test_optimal_path"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-network-task-trainer.py": {
+    "functions": [
+      "test_network_task_trainer"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-mode-advisor.py": {
+    "functions": [
+      "test_spatiotemporal_confidence"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-defense-nn.py": {
+    "functions": [
+      "test_defense_nn"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-resource-nn.py": {
+    "functions": [
+      "test_ogliodendrocyte_spawn",
+      "test_predict_with_pins",
+      "test_pin_and_release_memory",
+      "test_manage_resources"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-voice.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-config.py": {
+    "functions": [
+      "test_ai_personality"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-metacognition.py": {
+    "functions": [
+      "test_metacognition"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-game-copilot.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-message-bus.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-bug-hunter.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-neural-network.py": {
+    "functions": [
+      "test_forward",
+      "test_save_load",
+      "test_training"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-hardware-guard.py": {
+    "functions": [
+      "test_hardware_guard"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-collaboratory-nn.py": {
+    "functions": [
+      "test_collaboratory_nn"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-defense-engine.py": {
+    "functions": [
+      "test_defense_engine"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-self-healer.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-network-task-engine.py": {
+    "functions": [
+      "test_network_task_engine"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-bbi-engine.py": {
+    "functions": [
+      "test_bbi_engine"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-secure-node-manager.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-backup-restore.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-debug-sandbox.py": {
+    "functions": [
+      "test_debug_sandbox"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-code-updater.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-command-transformer.py": {
+    "error": "invalid syntax (<unknown>, line 6)"
+  },
+  "imp/tests/test-mood.py": {
+    "functions": [
+      "test_decay",
+      "test_update"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-auth.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-neural-manager.py": {
+    "functions": [
+      "test_register_and_get"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-core-functions.py": {
+    "functions": [
+      "test_ai_learning",
+      "test_strategy_generation"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-logs.py": {
+    "functions": [
+      "test_logging_system"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-speech.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-start-script.py": {
+    "functions": [
+      "test_start_script_uses_absolute_executor_path"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-security.py": {
+    "functions": [
+      "test_firewall",
+      "test_intrusion_detection",
+      "test_security_optimizer",
+      "test_vulnerability_scanner",
+      "test_poison_detector"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-mood-cli.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-network-monitor.py": {
+    "functions": [
+      "test_network_monitor"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-performance.py": {
+    "functions": [
+      "test_system_performance"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-network-task-nn.py": {
+    "functions": [
+      "test_network_task_nn"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-voice-menu.py": {
+    "functions": [
+      "test_voice_menu_exists",
+      "test_run_menu_present"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-chained-workflow.py": {
+    "functions": [
+      "load_module",
+      "test_chained_workflow"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-self-improvement.py": {
+    "functions": [
+      "test_code_updates"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-windows-support.py": {
+    "functions": [
+      "test_start_script",
+      "test_stop_script",
+      "test_powershell_keepalive"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-goal-chat.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-model-analysis.py": {
+    "functions": [
+      "test_compare_models",
+      "test_compare_3d_networks"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-intranet.py": {
+    "functions": [
+      "test_intranet_creation"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-network-auditor.py": {
+    "functions": [
+      "test_network_auditor"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-distributed-queue.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-install.py": {
+    "functions": [
+      "test_install_script_exists"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-3d-network.py": {
+    "functions": [
+      "test_basic_3d_network",
+      "test_novel_neuron",
+      "test_guide_novel_neuron",
+      "test_task_paths",
+      "test_angle_routing",
+      "test_evolve",
+      "test_auto_evolve"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-blockchain-ledger.py": {
+    "functions": [
+      "test_blockchain_ledger"
+    ],
+    "classes": []
+  },
+  "imp/tests/test-node-communicator.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-adaptive-planner.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-code-map.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-auto-heal.py": {
+    "functions": [],
+    "classes": []
+  },
+  "imp/tests/test-defense-trainer.py": {
+    "functions": [
+      "test_defense_trainer"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-distributed-memory.py": {
+    "functions": [
+      "_load_memory",
+      "_save_memory",
+      "store_fact",
+      "retrieve_fact"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-load-scheduler.py": {
+    "functions": [
+      "get_available_nodes",
+      "schedule_tasks"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-secure-node-manager.py": {
+    "functions": [
+      "register_node",
+      "list_nodes",
+      "remove_node",
+      "manage_nodes"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-resource-balancer.py": {
+    "functions": [
+      "get_system_usage",
+      "balance_resources"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-game-copilot.py": {
+    "functions": [
+      "_load",
+      "_save",
+      "learn_game",
+      "build_dreamscape"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-cluster-manager.py": {
+    "functions": [
+      "get_cluster_nodes",
+      "distribute_workload"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-node-monitor.py": {
+    "functions": [
+      "check_node_health"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-distributed-queue.py": {
+    "functions": [
+      "_load_queue",
+      "_save_queue",
+      "add_task",
+      "assign_tasks",
+      "get_assigned"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-intranet.py": {
+    "functions": [
+      "create_intranet",
+      "sanitize_packet",
+      "execute_aliased_command"
+    ],
+    "classes": []
+  },
+  "imp/expansion/imp-node-communicator.py": {
+    "functions": [
+      "secure_communication",
+      "send_secure_message",
+      "broadcast_secure_message"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-strategy-generator.py": {
+    "functions": [
+      "_build_offline_generator",
+      "get_learning_history",
+      "generate_new_strategy"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-network-task-engine.py": {
+    "functions": [
+      "load_model",
+      "latest_ip_count",
+      "run_network_tasks"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-goal-manager.py": {
+    "functions": [
+      "decide_mode",
+      "_throttle",
+      "_build_offline_generator",
+      "generate_text",
+      "get_existing_goals",
+      "add_new_goal"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-resource-engine.py": {
+    "functions": [
+      "pin_memory",
+      "release_pins",
+      "_pinned_usage",
+      "manage_resources"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-bbi-engine.py": {
+    "functions": [
+      "load_model"
+    ],
+    "classes": [
+      "BBIEngine"
+    ]
+  },
+  "imp/core/imp_neural_manager.py": {
+    "functions": [],
+    "classes": [
+      "NeuralManager"
+    ]
+  },
+  "imp/core/imp-goal-chat.py": {
+    "functions": [
+      "decide_mode",
+      "_throttle",
+      "_build_offline_generator",
+      "load_notes",
+      "send_chatgpt_request",
+      "evaluate_current_goals",
+      "chat_loop",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-status-monitor.py": {
+    "functions": [
+      "log_status"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-collaboratory-engine.py": {
+    "functions": [
+      "load_model",
+      "run_collaboration"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-voice.py": {
+    "functions": [
+      "get_default_female_voice",
+      "find_voice_by_name",
+      "speak",
+      "list_voices",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-motivation.py": {
+    "functions": [
+      "generate_motivations"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-defense-engine.py": {
+    "functions": [
+      "load_model",
+      "suspicious_count",
+      "run_defense_cycle"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-adaptive-planner.py": {
+    "functions": [
+      "_build_offline_generator",
+      "decide_mode",
+      "_throttle",
+      "_split_directive",
+      "_weigh_goal",
+      "build_plan",
+      "save_plan"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-learning-memory.py": {
+    "functions": [
+      "get_past_decisions",
+      "store_learnings"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-task-executor.py": {
+    "functions": [
+      "get_goals",
+      "get_pending_goals",
+      "execute_goals"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-decision-forecaster.py": {
+    "functions": [
+      "_build_offline_generator",
+      "get_current_strategy",
+      "predict_outcomes"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-3d-neural-network.py": {
+    "functions": [],
+    "classes": [
+      "Neuron",
+      "Connection",
+      "ThreeDNeuralNetwork"
+    ]
+  },
+  "imp/core/imp-voice-menu.py": {
+    "functions": [
+      "run_menu",
+      "slider",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-adversarial-nn.py": {
+    "functions": [],
+    "classes": [
+      "AdversarialNN"
+    ]
+  },
+  "imp/core/imp-defense-nn.py": {
+    "functions": [],
+    "classes": [
+      "DefenseNN"
+    ]
+  },
+  "imp/core/imp-bbi-nn.py": {
+    "functions": [],
+    "classes": [
+      "BBINN"
+    ]
+  },
+  "imp/core/imp-network-task-nn.py": {
+    "functions": [],
+    "classes": [
+      "NetworkTaskNN"
+    ]
+  },
+  "imp/core/imp-resource-nn.py": {
+    "functions": [],
+    "classes": [
+      "ResourceNN"
+    ]
+  },
+  "imp/core/imp-message-bus.py": {
+    "functions": [
+      "send_message",
+      "receive_messages",
+      "broadcast_message"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-mood-manager.py": {
+    "functions": [
+      "load_mood",
+      "save_mood",
+      "adjust_mood",
+      "decay_toward_baseline",
+      "update_mood"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-neural-network.py": {
+    "functions": [],
+    "classes": [
+      "SimpleNeuralNetwork"
+    ]
+  },
+  "imp/core/imp-speech-to-text.py": {
+    "functions": [
+      "transcribe",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/core/imp-collaboratory-nn.py": {
+    "functions": [],
+    "classes": [
+      "CollaboratoryNN"
+    ]
+  },
+  "imp/core/imp-execute.py": {
+    "functions": [
+      "_load",
+      "init_networks",
+      "main"
+    ],
+    "classes": []
+  },
+  "imp/communication/imp-command-transformer.py": {
+    "functions": [],
+    "classes": [
+      "CommandTransformer"
+    ]
+  }
+}

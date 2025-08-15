@@ -1,0 +1,6 @@
+[
+    {
+        "file": "tests/test-command-transformer.py",
+        "error": "  File \"/workspace/imp/imp/tests/test-command-transformer.py\", line 6\n    from communication.imp-command-transformer import CommandTransformer\n                          ^\nSyntaxError: invalid syntax\n"
+    }
+]

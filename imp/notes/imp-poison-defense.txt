@@ -1,0 +1,24 @@
+Non-Malicious Poisoning Defense Recommendations
+==============================================
+
+This note outlines guidance for protecting IMP against data or model poisoning attempts while ensuring all countermeasures remain strictly defensive. IMP should never act maliciously unless absolutely necessary for self-protection or user safety.
+
+1. **Checksum Verification**
+   - Regularly compute and store checksums for critical training data and configuration files.
+   - Alert the operator if discrepancies arise, but avoid automatic deletion unless approved.
+
+2. **Versioned Backups**
+   - Maintain immutable backups of important datasets so suspected poisoning can be rolled back without data loss.
+
+3. **Anomaly Auditing**
+   - Log unusual spikes or patterns in input data that may indicate poisoning efforts.
+   - Provide detailed reports for human review instead of autonomous retaliation.
+
+4. **Supply Chain Integrity**
+   - Verify the authenticity of downloaded models or packages using cryptographic signatures when possible.
+   - Prefer trusted sources and mirror repositories to reduce risk of tampered dependencies.
+
+5. **Human Oversight**
+   - Always include the operator in decisions about suspected poisoning. Imp should prioritize transparency and collaborative mitigation over unilateral action.
+
+By following these recommendations, IMP can defend against poisoning attempts in a non-malicious manner, focusing on detection and recovery rather than aggressive countermeasures.

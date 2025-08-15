@@ -1,0 +1,12 @@
+transformers
+openai
+ctransformers
+scapy
+requests
+pyttsx3
+google-auth
+google-auth-oauthlib
+SpeechRecognition
+psutil
+flake8
+twilio

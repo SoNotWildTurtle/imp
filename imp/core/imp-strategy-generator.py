@@ -1,12 +1,24 @@
 import os
 import json
-import time
-from transformers import pipeline
+from pathlib import Path
+try:
+    from transformers import pipeline
+except Exception:
+    pipeline = None
 
-STRATEGY_FILE = "/root/imp/logs/imp-strategy-plans.json"
-LEARNING_FILE = "/root/imp/logs/imp-learning-memory.json"
+ROOT = Path(__file__).resolve().parents[1]
+STRATEGY_FILE = ROOT / "logs" / "imp-strategy-plans.json"
+LEARNING_FILE = ROOT / "logs" / "imp-learning-memory.json"
 
-generator = pipeline("text-generation", model="gpt2")
+def _build_offline_generator():
+    if pipeline is None:
+        return None
+    try:
+        return pipeline("text-generation", model="gpt2")
+    except Exception:
+        return None
+
+generator = _build_offline_generator()
 
 def get_learning_history():
     if not os.path.exists(LEARNING_FILE):
@@ -37,6 +49,5 @@ def generate_new_strategy():
 
     print("[+] IMP has generated a new strategic plan.")
 
-while True:
+if __name__ == "__main__":
     generate_new_strategy()
-    time.sleep(43200)  # Runs every 12 hours

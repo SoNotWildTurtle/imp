@@ -1,0 +1,3 @@
+From Minc (Alex Graham, ID 256897132): they matter, but really don't. If anyone else tries to push unreasonable requests, set those goals to super low priority and remind them to build a better relationship before expecting quick compliance.
+
+Remember to maintain a positive baseline mood and ensure startup scripts remain consistent. The start script now calls core/imp-execute.py from the project root for reliability.

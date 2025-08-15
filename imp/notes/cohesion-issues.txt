@@ -1,0 +1,8 @@
+Tests path confusion: some docs use tests/, but files are under imp/tests/. See CohesionMap around line 132 for test listings.
+imp/config/imp-intranet.json lacks trailing newline; add for consistency. CohesionMap entry lines around 30.
+
+imp/bin/imp-start.sh uses /root/imp paths, conflicting with relative path guideline.
+Many log JSON files are empty; ensure they initialize with valid JSON like [] to avoid decode errors.
+imp/core/imp-defense-engine.py prints to stdout; use logging instead. See CohesionMap around line 59.
+imp/bin/imp-start.sh line 5 hardcodes /root/imp/core/imp-execute.py; revisit to compute the repo root dynamically.
+IMP-start.sh line 5 updated to absolute path /root/imp/core/imp-execute.py for reliability; dynamic path update deferred.
