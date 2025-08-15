@@ -1,14 +1,64 @@
 #!/bin/bash
-#chmod +x /root/imp/tests/run-all-tests.sh
 
-echo "🚀 Running Full IMP System Test Suite..."
+echo "🚀 Running Full Cimp System Test Suite..."
 
-python3 /root/imp/tests/test-core-functions.py
-python3 /root/imp/tests/test-security.py
-python3 /root/imp/tests/test-performance.py
-python3 /root/imp/tests/test-expansion.py
-python3 /root/imp/tests/test-self-improvement.py
-python3 /root/imp/tests/test-config.py
-python3 /root/imp/tests/test-logs.py
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+BASE_DIR="$(dirname "$SCRIPT_DIR")"
+
+python3 "$SCRIPT_DIR/test-core-functions.py"
+python3 "$SCRIPT_DIR/test-security.py"
+python3 "$SCRIPT_DIR/test-safety-monitor.py"
+python3 "$SCRIPT_DIR/test-ai-countermeasures.py"
+python3 "$SCRIPT_DIR/test-performance.py"
+python3 "$SCRIPT_DIR/test-expansion.py"
+python3 "$SCRIPT_DIR/test-self-improvement.py"
+python3 "$SCRIPT_DIR/test-code-quality.py"
+python3 "$SCRIPT_DIR/test-module-explorer.py"
+python3 "$SCRIPT_DIR/test-offline-evolver.py"
+python3 "$SCRIPT_DIR/test-metacognition.py"
+python3 "$SCRIPT_DIR/test-conversation-analyzer.py"
+python3 "$SCRIPT_DIR/test-perception-analyzer.py"
+python3 "$SCRIPT_DIR/test-chat-history-viewer.py"
+python3 "$SCRIPT_DIR/test-interaction.py"
+python3 "$SCRIPT_DIR/test-terminal-interface.py"
+python3 "$SCRIPT_DIR/test-gi-builder.py"
+python3 "$SCRIPT_DIR/test-gi-conversation-builder.py"
+python3 "$SCRIPT_DIR/test-gi-creator.py"
+python3 "$SCRIPT_DIR/test-gi-goal-viewer.py"
+python3 "$SCRIPT_DIR/test-gi-profile-manager.py"
+python3 "$SCRIPT_DIR/test-gi-communicator.py"
+python3 "$SCRIPT_DIR/test-gi-evolution-planner.py"
+python3 "$SCRIPT_DIR/test-gi-evolution-implementer.py"
+python3 "$SCRIPT_DIR/test-gi-evolution-analyzer.py"
+python3 "$SCRIPT_DIR/test-gi-operator-dashboard.py"
+python3 "$SCRIPT_DIR/test-gi-client-dashboard.py"
+python3 "$SCRIPT_DIR/test-gi-conversation-dashboard.py"
+python3 "$SCRIPT_DIR/test-gi-management-dashboard.py"
+python3 "$SCRIPT_DIR/test-gi-packager.py"
+python3 "$SCRIPT_DIR/test-gi-memory.py"
+python3 "$SCRIPT_DIR/test-gi-task-manager.py"
+python3 "$SCRIPT_DIR/test-gi-self-evolver.py"
+python3 "$SCRIPT_DIR/test-gi-experience.py"
+python3 "$SCRIPT_DIR/test-gi-knowledge.py"
+python3 "$SCRIPT_DIR/test-gi-skill-tracker.py"
+python3 "$SCRIPT_DIR/test-gi-skill-creator.py"
+python3 "$SCRIPT_DIR/test-gi-performance.py"
+python3 "$SCRIPT_DIR/test-gi-safety.py"
+python3 "$SCRIPT_DIR/test-gi-risk-analyzer.py"
+python3 "$SCRIPT_DIR/test-gi-comm-log.py"
+python3 "$SCRIPT_DIR/test-gi-implementation-log.py"
+python3 "$SCRIPT_DIR/test-gi-snapshot.py"
+python3 "$SCRIPT_DIR/test-gi-request.py"
+python3 "$SCRIPT_DIR/test-gi-feedback.py"
+python3 "$SCRIPT_DIR/test-gi-personality.py"
+python3 "$SCRIPT_DIR/test-gi-planner.py"
+python3 "$SCRIPT_DIR/test-gi-modules-terminal.py"
+python3 "$SCRIPT_DIR/test-gi-builder-terminal.py"
+python3 "$SCRIPT_DIR/test-config.py"
+python3 "$SCRIPT_DIR/test-logs.py"
+python3 "$SCRIPT_DIR/test-policy-engine.py"
+python3 "$SCRIPT_DIR/test-gi-web-dashboard.py"
+python3 "$SCRIPT_DIR/test-remote-terminal.py"
+python3 "$SCRIPT_DIR/test-startup-verifier.py"
 
 echo "✅ All Tests Completed!"

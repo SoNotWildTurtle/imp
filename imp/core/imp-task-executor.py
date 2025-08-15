@@ -1,8 +1,10 @@
 import os
 import json
 import time
+from pathlib import Path
 
-GOALS_FILE = "/root/imp/logs/imp-goals.json"
+BASE_DIR = Path(__file__).resolve().parents[1]
+GOALS_FILE = BASE_DIR / "logs" / "imp-goals.json"
 
 def get_pending_goals():
     if not os.path.exists(GOALS_FILE):
@@ -20,6 +22,5 @@ def execute_goals():
     with open(GOALS_FILE, "w") as f:
         json.dump(pending_goals, f, indent=4)
 
-while True:
+if __name__ == "__main__":
     execute_goals()
-    time.sleep(3600)

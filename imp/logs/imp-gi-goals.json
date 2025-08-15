@@ -1,0 +1,42 @@
+[
+  {
+    "goal": "Create GI creator utility",
+    "status": "complete"
+  },
+  {
+    "goal": "Save generated configs to imp/config/gi",
+    "status": "complete"
+  },
+  {
+    "goal": "Log builds to imp-gi-build-log.json",
+    "status": "complete"
+  },
+  {
+    "goal": "Provide automated tests for GI creation",
+    "status": "complete"
+  },
+  {
+    "goal": "Integrate GI build workflow with goal manager",
+    "status": "complete"
+  },
+  {
+    "goal": "Add environment and security level settings to GI profiles",
+    "status": "complete"
+  },
+  {
+    "goal": "Enable conversation-driven GI builder",
+    "status": "complete"
+  },
+  {
+    "goal": "Ask for safety guidelines when building profiles",
+    "status": "complete"
+  },
+  {
+    "goal": "Record perception-based personality suggestions in each profile",
+    "status": "complete"
+  },
+  {
+    "goal": "Provide reusable modules for GI memory, task tracking and self-evolution",
+    "status": "complete"
+  }
+]

@@ -1,0 +1,6 @@
+__pycache__/
+imp/security/__pycache__/
+*.pyc
+*.zip
+imp/gi_modules/custom/
+imp/config/policy-test.yaml
